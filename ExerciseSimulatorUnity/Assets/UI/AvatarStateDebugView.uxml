@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement class="panel-root">
+        <ui:Label text="Avatar Runtime" class="panel-title" />
+        <ui:VisualElement class="row">
+            <ui:Label text="Posture" class="label" />
+            <ui:Label name="PostureValue" text="Idle" class="value" />
+        </ui:VisualElement>
+        <ui:VisualElement class="row">
+            <ui:Label text="Command" class="label" />
+            <ui:Label name="CommandValue" text="None" class="value" />
+        </ui:VisualElement>
+        <ui:VisualElement class="row">
+            <ui:Label text="Exercise" class="label" />
+            <ui:Label name="ExerciseValue" text="None" class="value" />
+        </ui:VisualElement>
+        <ui:VisualElement class="row">
+            <ui:Label text="Busy" class="label" />
+            <ui:Label name="BusyValue" text="Available" class="value" />
+        </ui:VisualElement>
+        <ui:VisualElement class="row">
+            <ui:Label text="Profile" class="label" />
+            <ui:Label name="ProfileValue" text="None" class="value" />
+        </ui:VisualElement>
+        <ui:VisualElement class="row">
+            <ui:Label text="Fatigue" class="label" />
+            <ui:Label name="FatigueValue" text="0.00" class="value" />
+        </ui:VisualElement>
+        <ui:VisualElement class="row">
+            <ui:Label text="Discomfort" class="label" />
+            <ui:Label name="DiscomfortValue" text="0.00" class="value" />
+        </ui:VisualElement>
+        <ui:Label text="History" class="panel-subtitle" />
+        <ui:Label name="HistoryValue" text="No history yet." class="history" />
+    </ui:VisualElement>
+</ui:UXML>

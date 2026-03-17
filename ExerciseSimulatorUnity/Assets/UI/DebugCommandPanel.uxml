@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement class="panel-root">
+        <ui:Label text="Debug Commands" class="panel-title" />
+        <ui:Button name="StandButton" text="Stand" />
+        <ui:Button name="SitButton" text="Sit" />
+        <ui:Button name="KneelButton" text="Kneel" />
+        <ui:Button name="LieBackButton" text="Lie On Back" />
+        <ui:Button name="RemoveShoesButton" text="Remove Shoes" />
+        <ui:Button name="WallSitButton" text="Wall Sit" />
+    </ui:VisualElement>
+</ui:UXML>

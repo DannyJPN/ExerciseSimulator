@@ -1,0 +1,16 @@
+{
+  "name": "TrainerAvatarSimulator.UI",
+  "rootNamespace": "TrainerAvatarSimulator.UI",
+  "references": [
+    "TrainerAvatarSimulator.Runtime"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
