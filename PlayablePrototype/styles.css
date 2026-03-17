@@ -1,0 +1,849 @@
+:root {
+  --panel: rgba(255, 250, 242, 0.82);
+  --ink: #1f2430;
+  --muted: #6b6f76;
+  --accent: #a73f2d;
+  --deep: #243447;
+  --fatigue: #d58f1f;
+  --pain: #b72e2e;
+  --cardio: #4d7b95;
+  --line: rgba(31, 36, 48, 0.12);
+  --shadow: 0 28px 60px rgba(42, 38, 33, 0.18);
+  --skin: linear-gradient(180deg, #e7c0aa 0%, #c68f72 100%);
+  --shirt: linear-gradient(180deg, #445364 0%, #1d2733 100%);
+  --pants: linear-gradient(180deg, #2e3947 0%, #141d28 100%);
+  --shorts: linear-gradient(180deg, #525f6e 0%, #2b3644 100%);
+  --socks: linear-gradient(180deg, #f3f0ea 0%, #c9c1b7 100%);
+  --shoes: linear-gradient(180deg, #15181d 0%, #050608 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Bahnschrift", "Segoe UI Variable", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(167, 63, 45, 0.14), transparent 22%),
+    radial-gradient(circle at bottom right, rgba(77, 123, 149, 0.16), transparent 28%),
+    linear-gradient(140deg, #f6f1e8 0%, #efe6d8 40%, #e5dccd 100%);
+}
+
+.shell {
+  width: min(1500px, calc(100% - 32px));
+  margin: 24px auto;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.eyebrow,
+.panel-kicker,
+.request-label {
+  margin: 0 0 6px;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 0.96;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+select,
+button {
+  font: inherit;
+}
+
+select,
+button {
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.75);
+}
+
+select {
+  padding: 10px 12px;
+}
+
+button {
+  padding: 11px 14px;
+  cursor: pointer;
+  color: var(--ink);
+  transition: transform 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(167, 63, 45, 0.35);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.ghost-button {
+  background: transparent;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 320px minmax(500px, 1fr) 320px;
+  gap: 18px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(18px);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.panel-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.command-group + .command-group {
+  margin-top: 18px;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.request-panel {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(167, 63, 45, 0.13), rgba(183, 46, 46, 0.08));
+  border: 1px solid rgba(167, 63, 45, 0.18);
+}
+
+.request-panel.hidden {
+  display: none;
+}
+
+.request-text {
+  margin: 8px 0 14px;
+  line-height: 1.5;
+}
+
+.request-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.center-stage {
+  display: grid;
+  gap: 18px;
+}
+
+.stage {
+  overflow: hidden;
+}
+
+.count-badge {
+  padding: 9px 12px;
+  border-radius: 999px;
+  background: rgba(36, 52, 71, 0.08);
+  color: var(--deep);
+  font-size: 0.82rem;
+}
+
+.scene {
+  position: relative;
+  min-height: 470px;
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(255, 255, 255, 0.28), transparent 25%),
+    linear-gradient(180deg, #d9d2c4 0%, #c4baac 48%, #7b6d59 48%, #655643 100%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.ceiling-lights {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 22% 10%, rgba(255, 248, 225, 0.6), transparent 9%),
+    radial-gradient(circle at 47% 9%, rgba(255, 248, 225, 0.52), transparent 9%),
+    radial-gradient(circle at 72% 11%, rgba(255, 248, 225, 0.54), transparent 9%);
+}
+
+.mirror-panel {
+  position: absolute;
+  left: 34px;
+  top: 44px;
+  width: 290px;
+  height: 150px;
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(201, 225, 239, 0.6), rgba(144, 162, 178, 0.14)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 48%);
+  border: 10px solid rgba(112, 95, 74, 0.52);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+
+.wall {
+  position: absolute;
+  inset: 28px 66px 172px auto;
+  width: 252px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), transparent 46%),
+    repeating-linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.18) 8px,
+      rgba(0, 0, 0, 0.02) 8px,
+      rgba(0, 0, 0, 0.02) 16px
+    ),
+    linear-gradient(180deg, #ddd5c8, #c8bdae);
+  border-left: 8px solid rgba(36, 52, 71, 0.13);
+  box-shadow: -24px 0 40px rgba(0, 0, 0, 0.08);
+}
+
+.floor {
+  position: absolute;
+  inset: auto 0 0;
+  height: 172px;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.14)),
+    repeating-linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.08) 28px,
+      rgba(0, 0, 0, 0.03) 28px,
+      rgba(0, 0, 0, 0.03) 30px
+    );
+}
+
+.bench-prop {
+  position: absolute;
+  left: 110px;
+  bottom: 126px;
+  width: 168px;
+  height: 74px;
+}
+
+.bench-seat {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 18px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #3d454f, #1f262d);
+}
+
+.bench-leg {
+  position: absolute;
+  top: 12px;
+  width: 12px;
+  height: 58px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #525c67, #232b33);
+}
+
+.bench-leg.left {
+  left: 18px;
+}
+
+.bench-leg.right {
+  right: 18px;
+}
+
+.mat-prop {
+  position: absolute;
+  left: 344px;
+  bottom: 76px;
+  width: 170px;
+  height: 52px;
+  border-radius: 18px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.16), transparent 48%),
+    linear-gradient(180deg, #9c6d53, #6d4633);
+  transform: perspective(400px) rotateX(62deg);
+  box-shadow: 0 18px 24px rgba(0, 0, 0, 0.15);
+}
+
+.avatar {
+  position: absolute;
+  left: 146px;
+  bottom: 124px;
+  width: 178px;
+  height: 300px;
+  transition: left 600ms ease, bottom 350ms ease, transform 350ms ease;
+}
+
+.avatar::after {
+  content: "";
+  position: absolute;
+  left: 26px;
+  right: 26px;
+  bottom: -12px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.22);
+  filter: blur(8px);
+}
+
+.skin {
+  background: var(--skin);
+  box-shadow: inset -4px -8px 12px rgba(132, 82, 56, 0.16);
+}
+
+.avatar-head,
+.avatar-neck,
+.avatar-upper-body,
+.avatar-pelvis,
+.avatar-arm,
+.avatar-leg,
+.avatar-top-layer,
+.avatar-bottom-layer,
+.avatar-base-shorts,
+.avatar-sock,
+.avatar-shoe,
+.avatar-hair {
+  position: absolute;
+}
+
+.avatar-head {
+  top: 8px;
+  left: 62px;
+  width: 56px;
+  height: 66px;
+  border-radius: 28px 28px 24px 24px;
+  background: var(--skin);
+  box-shadow: inset -4px -8px 12px rgba(132, 82, 56, 0.16);
+}
+
+.avatar-hair {
+  top: 0;
+  left: 56px;
+  width: 66px;
+  height: 44px;
+  border-radius: 28px 28px 18px 18px;
+  background: linear-gradient(180deg, #39271d, #1a1310);
+}
+
+.avatar-neck {
+  top: 64px;
+  left: 82px;
+  width: 16px;
+  height: 20px;
+  border-radius: 8px;
+  background: var(--skin);
+}
+
+.avatar-upper-body {
+  top: 78px;
+  left: 54px;
+  width: 72px;
+  height: 82px;
+  border-radius: 28px 28px 24px 24px;
+}
+
+.avatar-top-layer {
+  top: 78px;
+  left: 48px;
+  width: 84px;
+  height: 92px;
+  border-radius: 28px 28px 24px 24px;
+  background: var(--shirt);
+  box-shadow: inset 0 -10px 16px rgba(0, 0, 0, 0.22);
+}
+
+.avatar-pelvis {
+  top: 152px;
+  left: 62px;
+  width: 56px;
+  height: 34px;
+  border-radius: 18px;
+}
+
+.avatar-bottom-layer {
+  top: 154px;
+  left: 54px;
+  width: 72px;
+  height: 40px;
+  border-radius: 18px 18px 14px 14px;
+  background: var(--pants);
+}
+
+.avatar-base-shorts {
+  top: 158px;
+  left: 58px;
+  width: 64px;
+  height: 34px;
+  border-radius: 14px;
+  background: var(--shorts);
+  z-index: 2;
+}
+
+.avatar-arm.upper {
+  top: 90px;
+  width: 18px;
+  height: 78px;
+  border-radius: 16px;
+  transform-origin: top center;
+}
+
+.avatar-arm.upper.left {
+  left: 34px;
+}
+
+.avatar-arm.upper.right {
+  right: 34px;
+}
+
+.avatar-arm.lower {
+  top: 150px;
+  width: 16px;
+  height: 72px;
+  border-radius: 14px;
+  transform-origin: top center;
+}
+
+.avatar-arm.lower.left {
+  left: 36px;
+}
+
+.avatar-arm.lower.right {
+  right: 36px;
+}
+
+.avatar-leg.thigh {
+  top: 182px;
+  width: 24px;
+  height: 86px;
+  border-radius: 16px;
+  transform-origin: top center;
+}
+
+.avatar-leg.thigh.left {
+  left: 64px;
+}
+
+.avatar-leg.thigh.right {
+  left: 92px;
+}
+
+.avatar-leg.shin {
+  top: 246px;
+  width: 22px;
+  height: 72px;
+  border-radius: 14px;
+  transform-origin: top center;
+}
+
+.avatar-leg.shin.left {
+  left: 64px;
+}
+
+.avatar-leg.shin.right {
+  left: 94px;
+}
+
+.avatar-sock {
+  top: 292px;
+  width: 22px;
+  height: 28px;
+  border-radius: 0 0 12px 12px;
+  background: var(--socks);
+}
+
+.avatar-sock.left {
+  left: 64px;
+}
+
+.avatar-sock.right {
+  left: 94px;
+}
+
+.avatar-shoe {
+  top: 314px;
+  width: 36px;
+  height: 14px;
+  border-radius: 12px 14px 12px 10px;
+  background: var(--shoes);
+}
+
+.avatar-shoe.left {
+  left: 56px;
+}
+
+.avatar-shoe.right {
+  left: 88px;
+}
+
+.avatar.wearing-top .avatar-top-layer {
+  opacity: 1;
+}
+
+.avatar:not(.wearing-top) .avatar-top-layer {
+  opacity: 0;
+}
+
+.avatar.wearing-bottom .avatar-bottom-layer {
+  opacity: 1;
+}
+
+.avatar:not(.wearing-bottom) .avatar-bottom-layer {
+  opacity: 0;
+}
+
+.avatar.wearing-socks .avatar-sock {
+  opacity: 1;
+}
+
+.avatar:not(.wearing-socks) .avatar-sock {
+  opacity: 0;
+}
+
+.avatar.wearing-shoes .avatar-shoe {
+  opacity: 1;
+}
+
+.avatar:not(.wearing-shoes) .avatar-shoe {
+  opacity: 0;
+}
+
+.avatar.posture-idle,
+.avatar.posture-standing {
+  transform: translateX(0) translateY(0);
+}
+
+.avatar.posture-moving {
+  animation: step-bob 650ms ease-in-out infinite;
+}
+
+.avatar.posture-aligning {
+  left: 540px;
+}
+
+.avatar.posture-holding {
+  left: 548px;
+  bottom: 84px;
+}
+
+.avatar.posture-holding .avatar-arm.upper.left {
+  transform: rotate(16deg);
+}
+
+.avatar.posture-holding .avatar-arm.upper.right {
+  transform: rotate(-16deg);
+}
+
+.avatar.posture-holding .avatar-arm.lower.left {
+  transform: rotate(20deg);
+}
+
+.avatar.posture-holding .avatar-arm.lower.right {
+  transform: rotate(-20deg);
+}
+
+.avatar.posture-holding .avatar-leg.thigh.left,
+.avatar.posture-holding .avatar-leg.thigh.right {
+  transform: rotate(-72deg);
+}
+
+.avatar.posture-holding .avatar-leg.shin.left,
+.avatar.posture-holding .avatar-leg.shin.right {
+  transform: rotate(14deg);
+}
+
+.avatar.posture-holding .avatar-sock.left,
+.avatar.posture-holding .avatar-sock.right,
+.avatar.posture-holding .avatar-shoe.left,
+.avatar.posture-holding .avatar-shoe.right {
+  top: 276px;
+}
+
+.avatar.posture-sitting {
+  bottom: 96px;
+}
+
+.avatar.posture-sitting .avatar-leg.thigh.left,
+.avatar.posture-sitting .avatar-leg.thigh.right {
+  transform: rotate(-96deg);
+}
+
+.avatar.posture-sitting .avatar-leg.shin.left,
+.avatar.posture-sitting .avatar-leg.shin.right {
+  transform: rotate(18deg);
+}
+
+.avatar.posture-kneeling {
+  bottom: 86px;
+}
+
+.avatar.posture-kneeling .avatar-leg.thigh.left,
+.avatar.posture-kneeling .avatar-leg.thigh.right {
+  transform: rotate(-112deg);
+}
+
+.avatar.posture-kneeling .avatar-leg.shin.left,
+.avatar.posture-kneeling .avatar-leg.shin.right {
+  transform: rotate(32deg);
+}
+
+.avatar.posture-wardrobe {
+  left: 182px;
+  bottom: 94px;
+}
+
+.avatar.posture-wardrobe .avatar-arm.upper.left,
+.avatar.posture-wardrobe .avatar-arm.upper.right {
+  transform: rotate(18deg);
+}
+
+.avatar.posture-wardrobe .avatar-arm.lower.left,
+.avatar.posture-wardrobe .avatar-arm.lower.right {
+  transform: rotate(56deg);
+}
+
+.avatar.posture-failure {
+  left: 560px;
+  bottom: 108px;
+  transform: rotate(-8deg);
+}
+
+.avatar.posture-failure .avatar-arm.upper.left {
+  transform: rotate(40deg);
+}
+
+.avatar.posture-failure .avatar-arm.upper.right {
+  transform: rotate(-56deg);
+}
+
+.avatar.posture-failure .avatar-arm.lower.left {
+  transform: rotate(78deg);
+}
+
+.avatar.posture-failure .avatar-arm.lower.right {
+  transform: rotate(-88deg);
+}
+
+.avatar.posture-failure .avatar-leg.thigh.left,
+.avatar.posture-failure .avatar-leg.thigh.right {
+  transform: rotate(-58deg);
+}
+
+.avatar.posture-failure .avatar-leg.shin.left,
+.avatar.posture-failure .avatar-leg.shin.right {
+  transform: rotate(22deg);
+}
+
+.avatar.pain-pulse .avatar-head,
+.avatar.pain-pulse .avatar-upper-body,
+.avatar.pain-pulse .avatar-top-layer {
+  animation: pain-pulse 640ms ease-in-out infinite;
+}
+
+.dialogue-strip {
+  margin-top: 16px;
+  min-height: 64px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(36, 52, 71, 0.92), rgba(24, 33, 43, 0.96));
+  color: #f7f4ef;
+  line-height: 1.5;
+}
+
+.history-list {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 10px;
+  max-height: 260px;
+  overflow: auto;
+  color: var(--muted);
+}
+
+.status-grid {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 18px;
+}
+
+.status-grid dt {
+  margin-bottom: 4px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.status-grid dd {
+  margin: 0;
+  font-size: 1.02rem;
+}
+
+.meter-set + .meter-set {
+  margin-top: 16px;
+}
+
+.meter-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.meter {
+  height: 14px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: rgba(36, 52, 71, 0.08);
+}
+
+.meter-fill {
+  height: 100%;
+  width: 0%;
+  border-radius: inherit;
+  transition: width 220ms ease;
+}
+
+.meter-fill.fatigue {
+  background: linear-gradient(90deg, #edcb74, var(--fatigue));
+}
+
+.meter-fill.pain {
+  background: linear-gradient(90deg, #e57c7c, var(--pain));
+}
+
+.meter-fill.cardio {
+  background: linear-gradient(90deg, #8eb8cb, var(--cardio));
+}
+
+.wardrobe-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.wardrobe-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.wardrobe-list li:last-child {
+  border-bottom: 0;
+}
+
+@keyframes step-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pain-pulse {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
+}
+
+@media (max-width: 1220px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .shell {
+    width: min(100% - 18px, 100%);
+    margin: 10px auto 18px;
+  }
+
+  .topbar {
+    flex-direction: column;
+  }
+
+  .button-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .status-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scene {
+    min-height: 360px;
+  }
+
+  .wall {
+    right: 26px;
+    width: 180px;
+  }
+
+  .bench-prop {
+    left: 44px;
+  }
+
+  .mat-prop {
+    left: 200px;
+    width: 140px;
+  }
+
+  .avatar {
+    transform: scale(0.86);
+    transform-origin: left bottom;
+  }
+
+  .avatar.posture-aligning,
+  .avatar.posture-holding,
+  .avatar.posture-failure {
+    left: 350px;
+  }
+}

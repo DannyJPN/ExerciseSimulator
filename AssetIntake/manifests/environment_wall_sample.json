@@ -1,0 +1,19 @@
+{
+  "asset_id": "ENV_Gym_Wall_A",
+  "category": "environment_prop",
+  "display_name": "Gym Wall A",
+  "source_tool": "Blender",
+  "license": "Internal evaluation only",
+  "author": "Sample Intake",
+  "scale_unit": "meter",
+  "target_pipeline": "unity_hdrp",
+  "rig_type": "none",
+  "technical_notes": "Wall section used for wall sit interaction slice.",
+  "files": [
+    { "path": "incoming/ENV_Gym_Wall_A.fbx", "kind": "mesh" },
+    { "path": "incoming/ENV_Gym_Wall_A_BaseColor.png", "kind": "texture" },
+    { "path": "incoming/ENV_Gym_Wall_A_Normal.png", "kind": "texture" },
+    { "path": "incoming/ENV_Gym_Wall_A_Mask.png", "kind": "texture" },
+    { "path": "incoming/ENV_Gym_Wall_A_Preview.png", "kind": "preview" }
+  ]
+}

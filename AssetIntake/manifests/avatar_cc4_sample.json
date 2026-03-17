@@ -1,0 +1,19 @@
+{
+  "asset_id": "CHR_Avatar01_Body",
+  "category": "avatar_body",
+  "display_name": "Avatar 01 Body",
+  "source_tool": "Character Creator 4",
+  "license": "Internal evaluation only",
+  "author": "Sample Intake",
+  "scale_unit": "meter",
+  "target_pipeline": "unity_hdrp",
+  "rig_type": "humanoid",
+  "technical_notes": "Baseline humanoid avatar for wall sit slice.",
+  "files": [
+    { "path": "incoming/CHR_Avatar01_Body.fbx", "kind": "mesh" },
+    { "path": "incoming/CHR_Avatar01_Skin_BaseColor.png", "kind": "texture" },
+    { "path": "incoming/CHR_Avatar01_Skin_Normal.png", "kind": "texture" },
+    { "path": "incoming/CHR_Avatar01_Skin_Mask.png", "kind": "texture" },
+    { "path": "incoming/CHR_Avatar01_Preview.png", "kind": "preview" }
+  ]
+}

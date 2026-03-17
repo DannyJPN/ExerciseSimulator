@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trainer Avatar Simulator Prototype</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Trainer Avatar Simulator</p>
+        <h1>Wall Sit Playable Prototype</h1>
+      </div>
+      <div class="topbar-actions">
+        <label class="profile-picker">
+          <span>Profile</span>
+          <select id="profile-select">
+            <option value="disciplined">Disciplined</option>
+            <option value="sensitive">Sensitive</option>
+            <option value="selfCritical">Self-Critical</option>
+            <option value="ambitious">Ambitious</option>
+          </select>
+        </label>
+        <button id="reset-button" class="ghost-button" type="button">Reset Session</button>
+      </div>
+    </header>
+
+    <main class="dashboard">
+      <section class="panel command-panel">
+        <div class="panel-title-row">
+          <div>
+            <p class="panel-kicker">Trainer Controls</p>
+            <h2>Commands</h2>
+          </div>
+        </div>
+
+        <div class="command-group">
+          <h3>Exercises</h3>
+          <div class="button-grid">
+            <button data-command="wallSit" type="button">Wall Sit</button>
+          </div>
+        </div>
+
+        <div class="command-group">
+          <h3>Postures</h3>
+          <div class="button-grid">
+            <button data-command="stand" type="button">Stand</button>
+            <button data-command="sit" type="button">Sit</button>
+            <button data-command="kneel" type="button">Kneel</button>
+          </div>
+        </div>
+
+        <div class="command-group">
+          <h3>Wardrobe</h3>
+          <div class="button-grid">
+            <button data-command="removeShoes" type="button">Remove Shoes</button>
+            <button data-command="removeSocks" type="button">Remove Socks</button>
+          </div>
+        </div>
+
+        <div class="command-group">
+          <h3>Sanctions</h3>
+          <div class="button-grid">
+            <button data-sanction="extendHold" type="button">Extend Hold</button>
+            <button data-sanction="lessClothing" type="button">Less Clothing</button>
+          </div>
+        </div>
+
+        <div id="request-panel" class="request-panel hidden">
+          <p class="request-label">Avatar Request</p>
+          <p id="request-text" class="request-text"></p>
+          <div class="request-actions">
+            <button id="accept-request" type="button">Accept</button>
+            <button id="reject-request" class="ghost-button" type="button">Reject</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="center-stage">
+        <div class="stage panel">
+          <div class="panel-title-row">
+            <div>
+              <p class="panel-kicker">Live Simulation</p>
+              <h2>Avatar</h2>
+            </div>
+            <div id="count-badge" class="count-badge">Waiting</div>
+          </div>
+
+          <div class="scene">
+            <div class="ceiling-lights"></div>
+            <div class="mirror-panel"></div>
+            <div class="bench-prop">
+              <div class="bench-seat"></div>
+              <div class="bench-leg left"></div>
+              <div class="bench-leg right"></div>
+            </div>
+            <div class="mat-prop"></div>
+            <div class="wall"></div>
+            <div class="floor"></div>
+
+            <div id="avatar-figure" class="avatar posture-idle wearing-top wearing-bottom wearing-shoes wearing-socks">
+              <div class="avatar-head"></div>
+              <div class="avatar-hair"></div>
+              <div class="avatar-neck"></div>
+              <div class="avatar-upper-body skin"></div>
+              <div class="avatar-top-layer"></div>
+              <div class="avatar-pelvis skin"></div>
+              <div class="avatar-bottom-layer"></div>
+              <div class="avatar-base-shorts"></div>
+
+              <div class="avatar-arm upper left skin"></div>
+              <div class="avatar-arm upper right skin"></div>
+              <div class="avatar-arm lower left skin"></div>
+              <div class="avatar-arm lower right skin"></div>
+
+              <div class="avatar-leg thigh left skin"></div>
+              <div class="avatar-leg thigh right skin"></div>
+              <div class="avatar-leg shin left skin"></div>
+              <div class="avatar-leg shin right skin"></div>
+
+              <div class="avatar-sock left"></div>
+              <div class="avatar-sock right"></div>
+              <div class="avatar-shoe left"></div>
+              <div class="avatar-shoe right"></div>
+            </div>
+          </div>
+
+          <div id="dialogue-strip" class="dialogue-strip">Trainer panel ready.</div>
+        </div>
+
+        <div class="panel history-panel">
+          <div class="panel-title-row">
+            <div>
+              <p class="panel-kicker">Session Log</p>
+              <h2>History</h2>
+            </div>
+          </div>
+          <ol id="history-list" class="history-list"></ol>
+        </div>
+      </section>
+
+      <aside class="side-stack">
+        <section class="panel">
+          <div class="panel-title-row">
+            <div>
+              <p class="panel-kicker">Avatar State</p>
+              <h2>Status</h2>
+            </div>
+          </div>
+          <dl class="status-grid">
+            <div>
+              <dt>Posture</dt>
+              <dd id="status-posture">Idle</dd>
+            </div>
+            <div>
+              <dt>Command</dt>
+              <dd id="status-command">None</dd>
+            </div>
+            <div>
+              <dt>Exercise</dt>
+              <dd id="status-exercise">None</dd>
+            </div>
+            <div>
+              <dt>Profile</dt>
+              <dd id="status-profile">Disciplined</dd>
+            </div>
+            <div>
+              <dt>Interaction</dt>
+              <dd id="status-interaction">Free</dd>
+            </div>
+            <div>
+              <dt>Hold</dt>
+              <dd id="status-hold">0 / 0 s</dd>
+            </div>
+          </dl>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title-row">
+            <div>
+              <p class="panel-kicker">Body Condition</p>
+              <h2>Fatigue and Pain</h2>
+            </div>
+          </div>
+
+          <div class="meter-set">
+            <div class="meter-row">
+              <span>Leg Fatigue</span>
+              <strong id="legs-fatigue-value">0%</strong>
+            </div>
+            <div class="meter"><div id="legs-fatigue-bar" class="meter-fill fatigue"></div></div>
+          </div>
+
+          <div class="meter-set">
+            <div class="meter-row">
+              <span>Leg Pain</span>
+              <strong id="legs-pain-value">0%</strong>
+            </div>
+            <div class="meter"><div id="legs-pain-bar" class="meter-fill pain"></div></div>
+          </div>
+
+          <div class="meter-set">
+            <div class="meter-row">
+              <span>Cardio</span>
+              <strong id="cardio-value">0%</strong>
+            </div>
+            <div class="meter"><div id="cardio-bar" class="meter-fill cardio"></div></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title-row">
+            <div>
+              <p class="panel-kicker">Wardrobe</p>
+              <h2>Current Clothing</h2>
+            </div>
+          </div>
+          <ul class="wardrobe-list">
+            <li><span>Top</span><strong id="wardrobe-top">Worn</strong></li>
+            <li><span>Bottom</span><strong id="wardrobe-bottom">Worn</strong></li>
+            <li><span>Shoes</span><strong id="wardrobe-shoes">Worn</strong></li>
+            <li><span>Socks</span><strong id="wardrobe-socks">Worn</strong></li>
+            <li><span>Base Shorts</span><strong>Always On</strong></li>
+          </ul>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

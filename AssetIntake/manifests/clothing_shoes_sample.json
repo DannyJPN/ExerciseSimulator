@@ -1,0 +1,20 @@
+{
+  "asset_id": "CLT_Avatar01_Shoes_A",
+  "category": "clothing",
+  "display_name": "Avatar 01 Training Shoes",
+  "source_tool": "Blender",
+  "license": "Internal evaluation only",
+  "author": "Sample Intake",
+  "scale_unit": "meter",
+  "target_pipeline": "unity_hdrp",
+  "slot": "shoes",
+  "rig_type": "humanoid",
+  "technical_notes": "Basic workout shoes for prototype wardrobe flow.",
+  "files": [
+    { "path": "incoming/CLT_Avatar01_Shoes_A.fbx", "kind": "mesh" },
+    { "path": "incoming/CLT_Avatar01_Shoes_A_BaseColor.png", "kind": "texture" },
+    { "path": "incoming/CLT_Avatar01_Shoes_A_Normal.png", "kind": "texture" },
+    { "path": "incoming/CLT_Avatar01_Shoes_A_Mask.png", "kind": "texture" },
+    { "path": "incoming/CLT_Avatar01_Shoes_A_Preview.png", "kind": "preview" }
+  ]
+}
