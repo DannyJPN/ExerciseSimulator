@@ -9,12 +9,16 @@ namespace TrainerAvatarSimulator.UI
     {
         [SerializeField] private UIDocument document;
         [SerializeField] private AvatarStateMachine avatarStateMachine;
+        [SerializeField] private AvatarSimulationController simulationController;
         [SerializeField] private CommandHistoryBuffer commandHistoryBuffer;
 
         private Label postureLabel;
         private Label commandLabel;
         private Label exerciseLabel;
         private Label busyLabel;
+        private Label profileLabel;
+        private Label fatigueLabel;
+        private Label discomfortLabel;
         private Label historyLabel;
 
         private void Awake()
@@ -27,6 +31,11 @@ namespace TrainerAvatarSimulator.UI
             if (avatarStateMachine == null)
             {
                 avatarStateMachine = FindFirstObjectByType<AvatarStateMachine>();
+            }
+
+            if (simulationController == null)
+            {
+                simulationController = FindFirstObjectByType<AvatarSimulationController>();
             }
 
             if (commandHistoryBuffer == null)
@@ -46,6 +55,9 @@ namespace TrainerAvatarSimulator.UI
             commandLabel = document.rootVisualElement.Q<Label>("CommandValue");
             exerciseLabel = document.rootVisualElement.Q<Label>("ExerciseValue");
             busyLabel = document.rootVisualElement.Q<Label>("BusyValue");
+            profileLabel = document.rootVisualElement.Q<Label>("ProfileValue");
+            fatigueLabel = document.rootVisualElement.Q<Label>("FatigueValue");
+            discomfortLabel = document.rootVisualElement.Q<Label>("DiscomfortValue");
             historyLabel = document.rootVisualElement.Q<Label>("HistoryValue");
         }
 
@@ -76,6 +88,24 @@ namespace TrainerAvatarSimulator.UI
             if (busyLabel != null)
             {
                 busyLabel.text = runtime.IsBusy ? "Busy" : "Available";
+            }
+
+            if (profileLabel != null)
+            {
+                profileLabel.text = simulationController == null ||
+                    string.IsNullOrWhiteSpace(simulationController.ActiveBehaviorProfileId)
+                    ? "None"
+                    : simulationController.ActiveBehaviorProfileId;
+            }
+
+            if (fatigueLabel != null)
+            {
+                fatigueLabel.text = runtime.Fatigue.GlobalFatigue.ToString("0.00");
+            }
+
+            if (discomfortLabel != null)
+            {
+                discomfortLabel.text = runtime.Fatigue.Discomfort.ToString("0.00");
             }
 
             if (historyLabel != null && commandHistoryBuffer != null)

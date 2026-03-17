@@ -12,6 +12,8 @@ namespace TrainerAvatarSimulator.UI
         [SerializeField] private CommandDispatcher dispatcher;
         [SerializeField] private List<CommandButtonBinding> commandBindings = new List<CommandButtonBinding>();
 
+        private readonly List<ButtonRegistration> activeRegistrations = new List<ButtonRegistration>();
+
         private void Awake()
         {
             if (document == null)
@@ -27,6 +29,24 @@ namespace TrainerAvatarSimulator.UI
 
         private void OnEnable()
         {
+            RegisterButtons();
+        }
+
+        private void OnDisable()
+        {
+            UnregisterButtons();
+        }
+
+        public void Configure(CommandDispatcher commandDispatcher)
+        {
+            dispatcher = commandDispatcher;
+            RegisterButtons();
+        }
+
+        private void RegisterButtons()
+        {
+            UnregisterButtons();
+
             if (document?.rootVisualElement == null || dispatcher == null)
             {
                 return;
@@ -45,8 +65,20 @@ namespace TrainerAvatarSimulator.UI
                     continue;
                 }
 
-                button.clicked += () => dispatcher.TryDispatch(binding.Command, CommandSource.DebugUI);
+                System.Action handler = () => dispatcher.TryDispatch(binding.Command, CommandSource.DebugUI);
+                button.clicked += handler;
+                activeRegistrations.Add(new ButtonRegistration(button, handler));
             }
+        }
+
+        private void UnregisterButtons()
+        {
+            foreach (var registration in activeRegistrations)
+            {
+                registration.Button.clicked -= registration.Handler;
+            }
+
+            activeRegistrations.Clear();
         }
     }
 
@@ -55,5 +87,17 @@ namespace TrainerAvatarSimulator.UI
     {
         public string ButtonName = string.Empty;
         public CommandDefinition Command;
+    }
+
+    internal readonly struct ButtonRegistration
+    {
+        public ButtonRegistration(Button button, System.Action handler)
+        {
+            Button = button;
+            Handler = handler;
+        }
+
+        public Button Button { get; }
+        public System.Action Handler { get; }
     }
 }

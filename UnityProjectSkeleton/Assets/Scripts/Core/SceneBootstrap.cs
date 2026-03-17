@@ -5,7 +5,9 @@ namespace TrainerAvatarSimulator.Core
 {
     public class SceneBootstrap : MonoBehaviour
     {
+        [SerializeField] private BootstrapConfiguration configuration;
         [SerializeField] private AvatarStateMachine avatarStateMachine;
+        [SerializeField] private AvatarSimulationController simulationController;
         [SerializeField] private CommandDispatcher commandDispatcher;
         [SerializeField] private AvatarRuntimeEvents runtimeEvents;
         [SerializeField] private CommandHistoryBuffer commandHistoryBuffer;
@@ -20,6 +22,11 @@ namespace TrainerAvatarSimulator.Core
             if (commandDispatcher == null)
             {
                 commandDispatcher = FindFirstObjectByType<CommandDispatcher>();
+            }
+
+            if (simulationController == null)
+            {
+                simulationController = FindFirstObjectByType<AvatarSimulationController>();
             }
 
             if (runtimeEvents == null)
@@ -40,6 +47,11 @@ namespace TrainerAvatarSimulator.Core
             if (commandHistoryBuffer != null && runtimeEvents != null)
             {
                 commandHistoryBuffer.Configure(runtimeEvents);
+            }
+
+            if (simulationController != null && configuration != null)
+            {
+                simulationController.ApplyBootstrapConfiguration(configuration);
             }
         }
     }

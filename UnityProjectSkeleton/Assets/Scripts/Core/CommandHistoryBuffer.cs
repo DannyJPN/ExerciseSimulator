@@ -11,6 +11,8 @@ namespace TrainerAvatarSimulator.Core
         [SerializeField] private int maxEntries = 20;
         [SerializeField] private List<CommandHistoryEntry> entries = new List<CommandHistoryEntry>();
 
+        private bool isSubscribed;
+
         public IReadOnlyList<CommandHistoryEntry> Entries => entries;
 
         private void Awake()
@@ -23,29 +25,19 @@ namespace TrainerAvatarSimulator.Core
 
         private void OnEnable()
         {
-            if (runtimeEvents == null)
-            {
-                return;
-            }
-
-            runtimeEvents.CommandStarted += HandleCommandStarted;
-            runtimeEvents.CommandInterrupted += HandleCommandInterrupted;
+            Subscribe();
         }
 
         private void OnDisable()
         {
-            if (runtimeEvents == null)
-            {
-                return;
-            }
-
-            runtimeEvents.CommandStarted -= HandleCommandStarted;
-            runtimeEvents.CommandInterrupted -= HandleCommandInterrupted;
+            Unsubscribe();
         }
 
         public void Configure(AvatarRuntimeEvents events)
         {
+            Unsubscribe();
             runtimeEvents = events;
+            Subscribe();
         }
 
         private void HandleCommandStarted(CommandExecutionContext context)
@@ -72,6 +64,30 @@ namespace TrainerAvatarSimulator.Core
             {
                 entries.RemoveRange(maxEntries, entries.Count - maxEntries);
             }
+        }
+
+        private void Subscribe()
+        {
+            if (isSubscribed || runtimeEvents == null)
+            {
+                return;
+            }
+
+            runtimeEvents.CommandStarted += HandleCommandStarted;
+            runtimeEvents.CommandInterrupted += HandleCommandInterrupted;
+            isSubscribed = true;
+        }
+
+        private void Unsubscribe()
+        {
+            if (!isSubscribed || runtimeEvents == null)
+            {
+                return;
+            }
+
+            runtimeEvents.CommandStarted -= HandleCommandStarted;
+            runtimeEvents.CommandInterrupted -= HandleCommandInterrupted;
+            isSubscribed = false;
         }
     }
 
