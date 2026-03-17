@@ -1,0 +1,52 @@
+{
+  "interactions": [
+    {
+      "interactionId": "INT_Wall_Default",
+      "interactionType": "Wall",
+      "requiredPosture": "Standing",
+      "alignmentOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.35
+      },
+      "alignmentEuler": {
+        "x": 0.0,
+        "y": 180.0,
+        "z": 0.0
+      },
+      "ikHintTag": "wall_back_contact"
+    },
+    {
+      "interactionId": "INT_Bench_Default",
+      "interactionType": "Bench",
+      "requiredPosture": "Standing",
+      "alignmentOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "alignmentEuler": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ikHintTag": "bench_contact"
+    },
+    {
+      "interactionId": "INT_Mat_Default",
+      "interactionType": "Mat",
+      "requiredPosture": "Standing",
+      "alignmentOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "alignmentEuler": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "ikHintTag": "mat_contact"
+    }
+  ]
+}

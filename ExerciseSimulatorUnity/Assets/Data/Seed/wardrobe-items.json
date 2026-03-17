@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "wardrobeItemId": "WRD_BasicTop",
+      "displayName": "Basic Top",
+      "slot": "Top",
+      "isRemovable": true,
+      "visualPrefabPath": "Assets/Prefabs/Avatar/Clothing/BasicTop.prefab",
+      "comfortModifier": 0.0,
+      "painModifier": 0.0,
+      "animationTag": "remove_top"
+    },
+    {
+      "wardrobeItemId": "WRD_BasicBottom",
+      "displayName": "Basic Bottom",
+      "slot": "Bottom",
+      "isRemovable": true,
+      "visualPrefabPath": "Assets/Prefabs/Avatar/Clothing/BasicBottom.prefab",
+      "comfortModifier": 0.0,
+      "painModifier": 0.0,
+      "animationTag": "remove_bottom"
+    },
+    {
+      "wardrobeItemId": "WRD_BasicShoes",
+      "displayName": "Basic Shoes",
+      "slot": "Shoes",
+      "isRemovable": true,
+      "visualPrefabPath": "Assets/Prefabs/Avatar/Clothing/BasicShoes.prefab",
+      "comfortModifier": -0.05,
+      "painModifier": 0.04,
+      "animationTag": "remove_shoes"
+    },
+    {
+      "wardrobeItemId": "WRD_BasicSocks",
+      "displayName": "Basic Socks",
+      "slot": "Socks",
+      "isRemovable": true,
+      "visualPrefabPath": "Assets/Prefabs/Avatar/Clothing/BasicSocks.prefab",
+      "comfortModifier": -0.02,
+      "painModifier": 0.02,
+      "animationTag": "remove_socks"
+    }
+  ]
+}

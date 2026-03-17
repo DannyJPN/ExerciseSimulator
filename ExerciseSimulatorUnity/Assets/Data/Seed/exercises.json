@@ -1,0 +1,95 @@
+{
+  "exercises": [
+    {
+      "exerciseId": "EX_WallSit",
+      "displayName": "Wall Sit",
+      "exerciseKind": "TimedHold",
+      "requiredInteraction": "Wall",
+      "entryPosture": "Standing",
+      "activePosture": "HoldingPose",
+      "defaultDurationSeconds": 45.0,
+      "defaultRepetitions": 0,
+      "alignmentOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -0.35
+      },
+      "loadProfile": {
+        "exerciseKind": "TimedHold",
+        "primarySegment": "Legs",
+        "globalFatigue": 0.08,
+        "cardioFatigue": 0.05,
+        "legsFatigue": 0.18,
+        "armsFatigue": 0.0,
+        "coreFatigue": 0.08,
+        "discomfort": 0.05,
+        "globalPain": 0.0,
+        "legsPain": 0.03,
+        "armsPain": 0.0,
+        "corePain": 0.01,
+        "fatigueDrivenPain": 0.04
+      },
+      "availableModifierIds": [
+        "MOD_WallSit_LongHold"
+      ],
+      "recommendedSanctionIds": [
+        "SAN_ExtendHold",
+        "SAN_LessClothing"
+      ]
+    },
+    {
+      "exerciseId": "EX_Squat",
+      "displayName": "Squat",
+      "exerciseKind": "Repetition",
+      "requiredInteraction": "None",
+      "entryPosture": "Standing",
+      "activePosture": "Exercising",
+      "defaultDurationSeconds": 0.0,
+      "defaultRepetitions": 12,
+      "alignmentOffset": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "loadProfile": {
+        "exerciseKind": "Repetition",
+        "primarySegment": "Legs",
+        "globalFatigue": 0.05,
+        "cardioFatigue": 0.03,
+        "legsFatigue": 0.14,
+        "armsFatigue": 0.0,
+        "coreFatigue": 0.06,
+        "discomfort": 0.03,
+        "globalPain": 0.0,
+        "legsPain": 0.02,
+        "armsPain": 0.0,
+        "corePain": 0.01,
+        "fatigueDrivenPain": 0.03
+      },
+      "availableModifierIds": [
+        "MOD_Squat_ArmsFront"
+      ],
+      "recommendedSanctionIds": [
+        "SAN_RepeatExercise",
+        "SAN_StricterVariation",
+        "SAN_LessClothing"
+      ]
+    }
+  ],
+  "exerciseModifiers": [
+    {
+      "modifierId": "MOD_WallSit_LongHold",
+      "displayName": "Long Hold",
+      "dialogueTag": "long_hold",
+      "fatigueMultiplier": 1.25,
+      "validationAdjustment": -0.05
+    },
+    {
+      "modifierId": "MOD_Squat_ArmsFront",
+      "displayName": "Arms Front",
+      "dialogueTag": "arms_front",
+      "fatigueMultiplier": 1.15,
+      "validationAdjustment": -0.04
+    }
+  ]
+}

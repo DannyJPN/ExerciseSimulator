@@ -1,0 +1,32 @@
+{
+  "configurationId": "BOOTSTRAP_MVP",
+  "initialPosture": "Standing",
+  "defaultBehaviorProfileId": "BHP_Disciplined",
+  "defaultDialogueTemplateSetId": "DLG_Disciplined",
+  "startingWardrobeItemIds": [
+    "WRD_BasicTop",
+    "WRD_BasicBottom",
+    "WRD_BasicShoes",
+    "WRD_BasicSocks"
+  ],
+  "debugCommandIds": [
+    "CMD_WallSit",
+    "CMD_Squat",
+    "CMD_Stand",
+    "CMD_Sit",
+    "CMD_Kneel",
+    "CMD_RemoveShoes",
+    "CMD_RemoveSocks"
+  ],
+  "registeredExerciseIds": [
+    "EX_WallSit",
+    "EX_Squat"
+  ],
+  "registeredSanctionIds": [
+    "SAN_RepeatExercise",
+    "SAN_ExtendHold",
+    "SAN_DoNotCount",
+    "SAN_StricterVariation",
+    "SAN_LessClothing"
+  ]
+}

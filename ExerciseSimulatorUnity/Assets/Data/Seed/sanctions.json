@@ -1,0 +1,54 @@
+{
+  "sanctions": [
+    {
+      "sanctionId": "SAN_RepeatExercise",
+      "displayName": "Repeat Exercise",
+      "sanctionType": "RepeatExercise",
+      "intensity": 0.0,
+      "minFormFailure": 0.2,
+      "allowNegotiation": true,
+      "preferredClothingSlot": "Shoes",
+      "blockOnPhysicalFailure": true
+    },
+    {
+      "sanctionId": "SAN_ExtendHold",
+      "displayName": "Extend Hold",
+      "sanctionType": "ExtendHold",
+      "intensity": 0.25,
+      "minFormFailure": 0.15,
+      "allowNegotiation": true,
+      "preferredClothingSlot": "Shoes",
+      "blockOnPhysicalFailure": true
+    },
+    {
+      "sanctionId": "SAN_DoNotCount",
+      "displayName": "Do Not Count",
+      "sanctionType": "DoNotCountRep",
+      "intensity": 0.0,
+      "minFormFailure": 0.05,
+      "allowNegotiation": false,
+      "preferredClothingSlot": "Shoes",
+      "blockOnPhysicalFailure": false
+    },
+    {
+      "sanctionId": "SAN_StricterVariation",
+      "displayName": "Stricter Variation",
+      "sanctionType": "StricterVariation",
+      "intensity": 0.2,
+      "minFormFailure": 0.18,
+      "allowNegotiation": true,
+      "preferredClothingSlot": "Shoes",
+      "blockOnPhysicalFailure": true
+    },
+    {
+      "sanctionId": "SAN_LessClothing",
+      "displayName": "Less Clothing",
+      "sanctionType": "LessClothing",
+      "intensity": 0.0,
+      "minFormFailure": 0.15,
+      "allowNegotiation": true,
+      "preferredClothingSlot": "Shoes",
+      "blockOnPhysicalFailure": true
+    }
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "profiles": [
+    {
+      "profileId": "BHP_Disciplined",
+      "displayName": "Disciplined",
+      "motivationBase": 0.68,
+      "complianceBase": 0.9,
+      "confidenceBase": 0.58,
+      "selfDisciplineBase": 0.88,
+      "selfCriticismBase": 0.62,
+      "fairnessSensitivity": 0.34,
+      "painSensitivity": 0.36,
+      "leniencySensitivity": 0.42,
+      "ambitionBase": 0.52,
+      "dialogueSetId": "DLG_Disciplined"
+    },
+    {
+      "profileId": "BHP_Sensitive",
+      "displayName": "Sensitive",
+      "motivationBase": 0.57,
+      "complianceBase": 0.78,
+      "confidenceBase": 0.44,
+      "selfDisciplineBase": 0.63,
+      "selfCriticismBase": 0.56,
+      "fairnessSensitivity": 0.58,
+      "painSensitivity": 0.82,
+      "leniencySensitivity": 0.48,
+      "ambitionBase": 0.4,
+      "dialogueSetId": "DLG_Sensitive"
+    },
+    {
+      "profileId": "BHP_SelfCritical",
+      "displayName": "SelfCritical",
+      "motivationBase": 0.62,
+      "complianceBase": 0.84,
+      "confidenceBase": 0.46,
+      "selfDisciplineBase": 0.81,
+      "selfCriticismBase": 0.92,
+      "fairnessSensitivity": 0.5,
+      "painSensitivity": 0.45,
+      "leniencySensitivity": 0.46,
+      "ambitionBase": 0.58,
+      "dialogueSetId": "DLG_SelfCritical"
+    },
+    {
+      "profileId": "BHP_Ambitious",
+      "displayName": "Ambitious",
+      "motivationBase": 0.82,
+      "complianceBase": 0.72,
+      "confidenceBase": 0.72,
+      "selfDisciplineBase": 0.76,
+      "selfCriticismBase": 0.67,
+      "fairnessSensitivity": 0.4,
+      "painSensitivity": 0.38,
+      "leniencySensitivity": 0.9,
+      "ambitionBase": 0.93,
+      "dialogueSetId": "DLG_Ambitious"
+    }
+  ]
+}

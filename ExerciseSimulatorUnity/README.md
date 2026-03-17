@@ -7,6 +7,7 @@ Co je uvnitr:
 - `Assets/` zkopirovane ze skeletonu
 - `Packages/manifest.json` s minimalnim manifestem
 - `ProjectSettings/ProjectVersion.txt` jako startovni placeholder pro `Unity 6`
+- `Assets/Data/Seed/` s prvnim MVP seed katalogem pro asset authoring
 
 Co zatim chybi:
 
@@ -27,6 +28,7 @@ Prvni krok na PC s `Unity`:
 4. Vytvorte scenu `Assets/Scenes/Gym_MVP.unity`.
 5. Podle `Assets/Scenes/README.md` zalozte `SceneBootstrap`, `AvatarRoot`, `Environment` a `UI`.
 6. Vytvorte prvni `ScriptableObject` assety podle `UnityProjectSkeleton/README.md`.
+7. Jako konkretni zdroj hodnot pouzijte `Assets/Data/Seed/`.
 
 Poznamka:
 

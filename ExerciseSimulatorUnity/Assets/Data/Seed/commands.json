@@ -1,0 +1,84 @@
+{
+  "commands": [
+    {
+      "commandId": "CMD_WallSit",
+      "displayName": "Wall Sit",
+      "commandType": "Exercise",
+      "linkedExerciseId": "EX_WallSit",
+      "targetPosture": "Idle",
+      "wardrobeTargetId": "",
+      "defaultPriority": 120,
+      "allowInterrupt": true
+    },
+    {
+      "commandId": "CMD_Squat",
+      "displayName": "Squat",
+      "commandType": "Exercise",
+      "linkedExerciseId": "EX_Squat",
+      "targetPosture": "Idle",
+      "wardrobeTargetId": "",
+      "defaultPriority": 120,
+      "allowInterrupt": true
+    },
+    {
+      "commandId": "CMD_Stand",
+      "displayName": "Stand",
+      "commandType": "AtomicPosture",
+      "linkedExerciseId": "",
+      "targetPosture": "Standing",
+      "wardrobeTargetId": "",
+      "defaultPriority": 100,
+      "allowInterrupt": true
+    },
+    {
+      "commandId": "CMD_Sit",
+      "displayName": "Sit",
+      "commandType": "AtomicPosture",
+      "linkedExerciseId": "",
+      "targetPosture": "Sitting",
+      "wardrobeTargetId": "",
+      "defaultPriority": 100,
+      "allowInterrupt": true
+    },
+    {
+      "commandId": "CMD_Kneel",
+      "displayName": "Kneel",
+      "commandType": "AtomicPosture",
+      "linkedExerciseId": "",
+      "targetPosture": "Kneeling",
+      "wardrobeTargetId": "",
+      "defaultPriority": 100,
+      "allowInterrupt": true
+    },
+    {
+      "commandId": "CMD_RemoveShoes",
+      "displayName": "Remove Shoes",
+      "commandType": "Wardrobe",
+      "linkedExerciseId": "",
+      "targetPosture": "Idle",
+      "wardrobeTargetId": "WRD_BasicShoes",
+      "defaultPriority": 110,
+      "allowInterrupt": true
+    },
+    {
+      "commandId": "CMD_RemoveSocks",
+      "displayName": "Remove Socks",
+      "commandType": "Wardrobe",
+      "linkedExerciseId": "",
+      "targetPosture": "Idle",
+      "wardrobeTargetId": "WRD_BasicSocks",
+      "defaultPriority": 110,
+      "allowInterrupt": true
+    },
+    {
+      "commandId": "CMD_HandsBehindHead",
+      "displayName": "Hands Behind Head",
+      "commandType": "AtomicPosture",
+      "linkedExerciseId": "",
+      "targetPosture": "Standing",
+      "wardrobeTargetId": "",
+      "defaultPriority": 105,
+      "allowInterrupt": true
+    }
+  ]
+}
