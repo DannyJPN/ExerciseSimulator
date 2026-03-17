@@ -41,6 +41,21 @@ namespace TrainerAvatarSimulator.Core
         Socks
     }
 
+    public enum BodySegment
+    {
+        None,
+        Cardio,
+        Legs,
+        Arms,
+        Core
+    }
+
+    public enum ExerciseKind
+    {
+        TimedHold,
+        Repetition
+    }
+
     public enum SanctionType
     {
         None,
@@ -49,7 +64,9 @@ namespace TrainerAvatarSimulator.Core
         ExtendHold,
         ExtraRepetitions,
         ShortenRest,
-        ExtraSet
+        ExtraSet,
+        StricterVariation,
+        LessClothing
     }
 
     public enum CommandExecutionStatus
@@ -68,5 +85,27 @@ namespace TrainerAvatarSimulator.Core
         DebugUI,
         GameplayUI,
         System
+    }
+
+    public enum FormIssueType
+    {
+        None,
+        RangeOfMotion,
+        UnwantedMovement,
+        EarlyTermination,
+        ContactLoss,
+        Tempo
+    }
+
+    public enum BehaviorDecisionKind
+    {
+        None,
+        RequestRelief,
+        RequestClothingAdjustment,
+        RequestMoreIntensity,
+        ConfessPoorForm,
+        SelfAssignSanction,
+        PleadForMercy,
+        ReportPhysicalFailure
     }
 }

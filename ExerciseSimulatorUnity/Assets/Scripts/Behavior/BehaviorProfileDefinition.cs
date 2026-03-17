@@ -15,6 +15,7 @@ namespace TrainerAvatarSimulator.Behavior
         [SerializeField, Range(0f, 1f)] private float fairnessSensitivity = 0.5f;
         [SerializeField, Range(0f, 1f)] private float painSensitivity = 0.5f;
         [SerializeField, Range(0f, 1f)] private float leniencySensitivity = 0.5f;
+        [SerializeField, Range(0f, 1f)] private float ambitionBase = 0.55f;
         [SerializeField] private string dialogueSetId = string.Empty;
 
         public string ProfileId => profileId;
@@ -27,6 +28,7 @@ namespace TrainerAvatarSimulator.Behavior
         public float FairnessSensitivity => fairnessSensitivity;
         public float PainSensitivity => painSensitivity;
         public float LeniencySensitivity => leniencySensitivity;
+        public float AmbitionBase => ambitionBase;
         public string DialogueSetId => dialogueSetId;
     }
 }

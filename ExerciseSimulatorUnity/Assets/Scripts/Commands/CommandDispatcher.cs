@@ -1,5 +1,6 @@
 using UnityEngine;
 using TrainerAvatarSimulator.Core;
+using TrainerAvatarSimulator.Exercises;
 
 namespace TrainerAvatarSimulator.Commands
 {
@@ -58,6 +59,7 @@ namespace TrainerAvatarSimulator.Commands
 
             if (command.LinkedExercise != null)
             {
+                runtimeState.CurrentExercise = ExerciseExecutionState.FromDefinition(command.LinkedExercise);
                 runtimeEvents?.RaiseExerciseAssigned(command.LinkedExercise.ExerciseId);
                 return TryEnterState(nextContext, AvatarPostureState.Moving, "Could not enter moving state.");
             }

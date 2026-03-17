@@ -62,6 +62,9 @@ namespace TrainerAvatarSimulator.Core
             behaviorState.FairnessPerception = 1f - profile.FairnessSensitivity;
             behaviorState.PerceivedLeniency = profile.LeniencySensitivity;
             behaviorState.Humility = Mathf.Clamp01((profile.ComplianceBase + profile.SelfCriticismBase) * 0.5f);
+            behaviorState.PainTolerance = 1f - profile.PainSensitivity;
+            behaviorState.Ambition = profile.AmbitionBase;
+            behaviorState.PerfectExecutionCount = 0;
 
             activeBehaviorProfileId = profile.ProfileId;
             activeDialogueSetId = dialogueSet != null ? dialogueSet.DialogueSetId : profile.DialogueSetId;
@@ -82,6 +85,7 @@ namespace TrainerAvatarSimulator.Core
 
             slotState.IsAvailable = true;
             slotState.IsWorn = true;
+            slotState.IsRemovable = item.IsRemovable;
             slotState.ItemId = item.WardrobeItemId;
         }
 

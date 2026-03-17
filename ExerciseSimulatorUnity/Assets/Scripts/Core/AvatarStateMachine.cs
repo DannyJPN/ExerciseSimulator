@@ -50,6 +50,7 @@ namespace TrainerAvatarSimulator.Core
             runtimeState.ActiveCommandId = string.Empty;
             runtimeState.ActiveExerciseId = string.Empty;
             runtimeState.ActiveCommandContext = new CommandExecutionContext();
+            runtimeState.CurrentExercise = new Exercises.ExerciseExecutionState();
         }
 
         public bool IsTransitionAllowed(AvatarPostureState fromState, AvatarPostureState toState)
