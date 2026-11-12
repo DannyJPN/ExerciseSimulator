@@ -33,6 +33,3 @@ AssetDownloads/
 
 # Python
 __pycache__/
-
-# Generated reference images (reproducible via image_generation script)
-image_generation/generated/
