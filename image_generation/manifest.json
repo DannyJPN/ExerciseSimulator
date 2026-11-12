@@ -1,0 +1,274 @@
+{
+  "profiles": {
+    "P1": "One adult woman, late 20s, East Asian, lean runner build, black ponytail, calm focused face.",
+    "P2": "One adult man, early 30s, Black, athletic build, shaved head, composed expression.",
+    "P3": "One adult woman, mid 30s, Central European, average sturdy build, shoulder-length brown hair, realistic facial features.",
+    "P4": "One adult man, late 20s, South Asian, slim build, short wavy hair, alert expression.",
+    "P5": "One adult woman, early 40s, Latina, strong build, braided dark hair, grounded expression.",
+    "P6": "One adult man, mid 40s, Middle Eastern, sturdy average build, trimmed salt-and-pepper beard, serious expression.",
+    "P7": "One adult woman, early 30s, Black, muscular legs, short natural hair, disciplined posture.",
+    "P8": "One adult man, late 30s, East Asian, compact build, short neat hair, neutral expression.",
+    "P9": "One adult woman, late 20s, South Asian, average build, dark hair in a low braid, attentive expression.",
+    "P10": "One adult man, mid 30s, White, stockier build, short light brown hair, realistic freckles and focused face."
+  },
+  "scenes": [
+    {
+      "id": "EX_WallSit_Base",
+      "profile": "P1",
+      "description": "The subject performs a correct wall sit against a plain gym wall, thighs nearly parallel to the floor, back flat on the wall, feet shoulder-width apart, arms relaxed, full body visible.",
+      "outfit": "plain training T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "EX_WallSit_LateHoldFatigue",
+      "profile": "P7",
+      "description": "The subject is late in a wall sit hold, still maintaining the position but showing visible leg fatigue, tense face, trembling thighs, heavier breathing, slight strain in posture, still correct enough to continue.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "EX_WallSit_ExtendHold",
+      "profile": "P2",
+      "description": "The subject remains in a prolonged wall sit after being instructed to hold longer, determined expression, posture strict and realistic, clear sense of extended endurance effort.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "EX_WallSit_LessClothing_ShoesOffSocksOff",
+      "profile": "P5",
+      "description": "The subject performs a wall sit with shoes and socks removed, barefoot on the gym floor, still in modest sportswear with non-removable compression shorts under training shorts, realistic and respectful presentation.",
+      "outfit": "plain athletic top, training shorts over non-removable compression shorts, barefoot"
+    },
+    {
+      "id": "EX_Squat_Base",
+      "profile": "P4",
+      "description": "The subject performs a realistic bodyweight squat in a gym, hips lowered with good depth, heels grounded, spine neutral, arms naturally balanced, full body visible.",
+      "outfit": "plain training T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "EX_Squat_ArmsFront_Stricter",
+      "profile": "P9",
+      "description": "The subject performs a stricter squat variation with both arms straight forward at shoulder height, realistic balance and controlled depth, documentary instructional tone.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "EX_PushUp_Base",
+      "profile": "P6",
+      "description": "The subject performs a standard push-up on a gym mat, body in a straight line from shoulders to heels, full body visible, realistic male human anatomy and hand detail.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "EX_KneePushUp_Base",
+      "profile": "P3",
+      "description": "The subject performs a knee push-up on a mat, knees on the floor, torso aligned, hands under shoulders, realistic instructional posture, full body visible.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "EX_Surrenders_StandHandsBehindHead",
+      "profile": "P8",
+      "description": "The subject stands upright at the start of a surrenders repetition with both hands behind the head, elbows open, feet on the gym floor, ready to begin the exercise.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "EX_Surrenders_OneKneeDown",
+      "profile": "P1",
+      "description": "The subject is in the first transition of a surrenders repetition, one knee lowered to the floor, the other foot planted, both hands behind the head, stable realistic balance.",
+      "outfit": "plain training top, training shorts, socks, trainers"
+    },
+    {
+      "id": "EX_Surrenders_BothKnees",
+      "profile": "P10",
+      "description": "The subject is in the middle of a surrenders repetition, both knees on the floor, torso upright, hands behind the head, realistic controlled movement.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "EX_Surrenders_OtherKneeDown",
+      "profile": "P7",
+      "description": "The subject is in the next transition of a surrenders repetition, rising through the opposite knee position with hands behind the head, realistic athletic control.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "EX_SitUp_TopPosition",
+      "profile": "P2",
+      "description": "The subject is at the top of a full sit-up on a gym mat, torso fully raised, knees bent, feet grounded, realistic abdominal effort, full body visible.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "EX_Lunge_LeftForward",
+      "profile": "P5",
+      "description": "The subject performs a forward lunge with the left leg forward, torso upright, knees bent correctly, controlled realistic form in a gym.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "EX_Lunge_RightForward",
+      "profile": "P4",
+      "description": "The subject performs a forward lunge with the right leg forward, torso upright, realistic balance and alignment, full body visible.",
+      "outfit": "plain training T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "CMD_Stand",
+      "profile": "P6",
+      "description": "The subject stands in a neutral ready stance in a gym, full body visible, natural posture, waiting for the next command.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "CMD_Sit_BentKnees",
+      "profile": "P8",
+      "description": "The subject sits on the floor with knees bent, upright torso, realistic relaxed but attentive posture, gym setting.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "CMD_Kneel",
+      "profile": "P3",
+      "description": "The subject kneels upright on both knees in a neutral gym pose, torso vertical, hips lifted above the heels, thighs angled upward from the knees, buttocks clearly not resting on the heels, hands relaxed, realistic full body anatomy.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "CMD_SitOnHeels",
+      "profile": "P9",
+      "description": "The subject sits back fully on the heels in a controlled resting kneeling posture on the gym floor, buttocks resting directly on the heels, knees folded under the body, lower legs flat on the floor, clearly different from upright kneeling, realistic body proportions and calm face.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "CMD_LieFront",
+      "profile": "P10",
+      "description": "The subject lies face down on a gym mat, body aligned naturally, full body visible from a readable angle, documentary exercise reference style.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "CMD_LieBack",
+      "profile": "P1",
+      "description": "The subject lies on the back on a gym mat, knees slightly bent, arms relaxed beside the torso, realistic anatomy and facial visibility.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "CMD_SquatDown",
+      "profile": "P2",
+      "description": "The subject holds a low squat-down posture on the gym floor, heels near the ground, torso balanced, realistic human proportions.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "CMD_ArmsFront",
+      "profile": "P5",
+      "description": "The subject stands upright with both arms extended forward at shoulder height, palms down, full body visible, clear five-finger hand detail.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "CMD_ArmsSide",
+      "profile": "P4",
+      "description": "The subject stands upright with both arms extended to the sides at shoulder height, neutral controlled posture, realistic anatomy and visible fingers.",
+      "outfit": "plain training T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "CMD_ArmsUp",
+      "profile": "P7",
+      "description": "The subject stands upright with both arms raised overhead, shoulders engaged, realistic gym instruction pose, full body visible.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "CMD_HandsBehindHead",
+      "profile": "P6",
+      "description": "The subject stands with both hands placed behind the head, elbows open, chest upright, realistic instructional gym pose.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "CMD_RemoveShoes",
+      "profile": "P3",
+      "description": "The subject discreetly removes training shoes in the nearest practical seated posture, realistic non-sexual sports context, respectful presentation.",
+      "outfit": "plain athletic top, training shorts, socks partly visible, shoes being removed"
+    },
+    {
+      "id": "CMD_RemoveSocks",
+      "profile": "P8",
+      "description": "The subject discreetly removes socks in a practical seated gym posture after shoes are already off, realistic and respectful presentation.",
+      "outfit": "plain athletic T-shirt, training shorts, barefoot with socks being removed by hand"
+    },
+    {
+      "id": "REACT_ReliefRequest_Polite",
+      "profile": "P9",
+      "description": "The subject politely asks for relief during a demanding exercise pause, tired but respectful expression, slight raised hand or pleading gesture, still in a gym training context.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "REACT_IntensityRequest_Polite",
+      "profile": "P2",
+      "description": "The subject respectfully asks for a harder exercise or more repetitions, composed determined expression, modest confident body language, gym setting.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "REACT_PoorFormConfession",
+      "profile": "P5",
+      "description": "The subject calmly admits an exercise was performed incorrectly, self-aware expression, slight gesture of acknowledgement, realistic instructional scene.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "REACT_MercyPlea_AfterSanction",
+      "profile": "P4",
+      "description": "The subject respectfully pleads for a lighter sanction or easier continuation after an extra hold was assigned, tired but obedient expression, non-dramatic and non-theatrical.",
+      "outfit": "plain training T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "REACT_SanctionAcceptance",
+      "profile": "P6",
+      "description": "The subject accepts a stricter training consequence with a disciplined expression, shoulders set, posture respectful, clear sense of compliance in a gym setting.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "REACT_MildFatigue",
+      "profile": "P1",
+      "description": "The subject shows mild exercise fatigue: slightly heavier breathing, subtle strain in face and posture, but still controlled and functional, gym environment.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "REACT_HeavyFatigue",
+      "profile": "P10",
+      "description": "The subject shows heavy fatigue after exercise: bent slightly forward, hands on thighs, strong breathing, visible exhaustion but still standing, realistic full body scene.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "REACT_PainReport_Legs",
+      "profile": "P7",
+      "description": "The subject reports pain in the legs, one or both hands briefly touching the painful thigh area in a protective realistic manner, facial expression clear but restrained.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "REACT_PhysicalFailure_ProtectivePose",
+      "profile": "P3",
+      "description": "The subject has reached physical failure and adopts a protective pose, guarding the painful body area, realistic fatigue and pain, non-violent, respectful gym scene.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "REACT_ClothingAdjustmentRequest",
+      "profile": "P8",
+      "description": "The subject respectfully asks to adjust clothing for practicality and comfort before continuing exercise, modest explanatory gesture, realistic gym context.",
+      "outfit": "plain athletic T-shirt, training shorts, shoes and socks on"
+    },
+    {
+      "id": "REACT_ExerciseNotCounted",
+      "profile": "P5",
+      "description": "The subject reacts to an exercise repetition not being counted, acknowledging the result with disciplined disappointment and realistic posture, no anger or drama.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "PROFILE_Disciplined_Neutral",
+      "profile": "P6",
+      "description": "Portrait-like full body gym stance showing the disciplined profile: upright posture, calm obedient expression, ready to follow instruction, full body visible.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    },
+    {
+      "id": "PROFILE_Sensitive_Discomfort",
+      "profile": "P9",
+      "description": "Portrait-like full body gym stance showing the sensitive profile: slight visible discomfort, cautious expression, attentive to body strain, realistic adult anatomy.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "PROFILE_SelfCritical_Confession",
+      "profile": "P1",
+      "description": "Portrait-like full body gym stance showing the self-critical profile: thoughtful self-aware expression as if admitting an error, modest posture, documentary tone.",
+      "outfit": "plain athletic top, training shorts, socks, trainers"
+    },
+    {
+      "id": "PROFILE_Ambitious_RequestMore",
+      "profile": "P2",
+      "description": "Portrait-like full body gym stance showing the ambitious profile: focused eyes, energetic posture, body language suggesting a request for more challenge, realistic and respectful.",
+      "outfit": "plain athletic T-shirt, training shorts, socks, trainers"
+    }
+  ]
+}
