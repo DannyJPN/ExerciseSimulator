@@ -24,6 +24,8 @@ Pravidla:
 - historie a detail lze schovat
 - ovladani pres klikaci panely, ne pres svet ve scene
 - textova komunikace avatara ma byt cistitelna bez prekryti hlavni akce
+- UI je `cesky`, vsechny texty pres lokalizacni klice (pripraveno na dalsi jazyk)
+- UI trenerovi `nezobrazuje chyby provedeni` – trener je musi sam odhalit pozorovanim
 
 ## Hlavni layout
 
@@ -52,8 +54,22 @@ Skupiny:
 - `Exercises`
 - `Postures`
 - `Arms`
-- `Wardrobe`
+- `Wardrobe` (sundat / obleci zpet pro kazdy slot)
+- `Set Control` (`Dalsi serie`, `Dost`)
+- `Trainer Responses` (`Prijmout`, `Zamitnout`, `Odpustit`)
 - `Sanctions`
+
+### 1b. Zadani parametru cviku
+
+Pri volbe cviku trener:
+
+- vybere ulozeny `preset`, nebo
+- zada parametry rucne: pocet serii, opakovani nebo delka vydrze, u cviku se stranami `strana` (`avatar voli` / `stridave` / `jen leva` / `jen prava`), nebo
+- spusti cviceni `bez cile`
+
+Rucne zadane parametry lze ulozit jako novy preset.
+
+Pauza mezi seriemi trva do povelu `Dalsi serie`.
 
 Priklad tlacitek:
 
@@ -79,8 +95,13 @@ Zobrazeni:
 - `Posture`
 - `Command`
 - `Exercise`
-- `Counted / Not Counted`
+- `Serie` (aktualni / celkem, `pauza` mezi seriemi)
+- `Pokusy` (provedena opakovani nebo uplynuly cas – bez hodnoceni spravnosti)
 - `Busy / Available`
+
+Poznamka:
+
+- `Counted / Not Counted` se trenerovi nezobrazuje; o nezapocitani rozhoduje trener
 
 ### 3. Fatigue and Pain Panel
 
@@ -92,22 +113,22 @@ Obsah:
 
 Segmenty:
 
-- nohy
-- ruce
-- stred tela
-- kardio
+- jednotlive svaly, zvlast leva a prava strana (viz `FUNCTIONAL_SPEC_V2.md`, `Segmenty tela`)
+- kardio (jen unava)
 
 Doporucene zobrazeni:
 
-- horizontalni bary
+- mapa tela (predni a zadni pohled) s obarvenymi svaly
+- pod ni souhrnne bary po skupinach (nohy, ruce, trup, kardio) s moznosti rozbaleni na jednotlive svaly
 - barvy pro warning a critical
+- indikace `pretizeni` (avatar muze odmitnout cviky zatezujici dany sval)
 
 ### 4. Wardrobe Panel
 
 Obsah:
 
-- top
-- bottom
+- top (mikina / bunda)
+- bottom (teplaky)
 - shoes
 - socks
 
@@ -115,10 +136,11 @@ U kazde polozky:
 
 - obleceno / neobleceno
 - zda je slot dostupny
+- tlacitko `sundat` / `obleci zpet`
 
 Poznamka:
 
-- nesundatelne sortky se v panelu nemusi chovat jako editable slot
+- nesundatelna zakladni vrstva (tricko/tilko + sortky / sukne s vsitymi sortkami) se v panelu nezobrazuje jako slot
 
 ## Skryte nebo sekundarni panely
 
@@ -131,9 +153,9 @@ Obsah:
 - zadane prikazy
 - dokoncene cviky
 - nedokoncene cviky
-- chyby provedeni
-- sankce
-- prosby avatara
+- nezapocitani a sankce udelene trenerem
+- priznani chyb avatarem (jen to, co avatar sam rekl)
+- prosby avatara a odpovedi trenera (prijato / zamitnuto / odpusteno / bez odpovedi)
 
 Mozne formy:
 
@@ -143,7 +165,7 @@ Mozne formy:
 
 ### 6. Detail Evaluation Panel
 
-Nepovinne pro uplne prvni build, ale doporucene pro ladeni.
+Pouze `debug` panel pro vyvojare, ve hre pro trenera nedostupny (trener chyby nevidi).
 
 Obsah:
 
@@ -209,6 +231,7 @@ Horni lista nebo horni roh ma obsahovat:
 - `Autosave indicator`
 - `Select Avatar`
 - `Load Avatar`
+- `New Avatar` (predloha + upravy vzhledu, profil osobnosti, jmeno)
 - `Session Menu`
 
 ## Interakcni pravidla
@@ -235,9 +258,11 @@ Tok:
 
 Tok:
 
-1. avatar zobrazi zpravu v `Dialogue Strip`
-2. pokud jde o volbu trenera, v panelu sankci nebo cviku se ukaze odpovidajici kontext
-3. po zamitnuti se dialog strip aktualizuje a avatar pokracuje
+1. pokud avatar prave necvici, otoci se do kamery; behem cviku muze kratce zaujmout prosebnou pozici (pauza bez trestu)
+2. avatar zobrazi zpravu v `Dialogue Strip`
+3. trener odpovi: `Prijmout`, `Zamitnout`, u zadosti o sankci zvoli sankci nebo `Odpustit`
+4. pokud trener neodpovi, avatar pokracuje ve cviceni
+5. po zamitnuti se dialog strip aktualizuje a avatar pokracuje
 
 ## Priorita informaci
 
@@ -259,13 +284,19 @@ Nizsi priorita:
 - idle
 - active command
 - active exercise
+- rest between sets (ceka na `Dalsi serie`)
+- open-ended exercise (ceka na `Dost`)
+- plea pause (prosebna pozice)
 - interrupted exercise
-- not counted
+- not counted (rozhodnuti trenera)
 - relief requested
 - intensity requested
+- sanction requested by avatar
 - sanction assigned
-- sanction blocked
-- physical failure
+- sanction blocked (vcetne duvodu: fyzicke selhani / preruseni trenerem / neni co sundat)
+- forgiven
+- overload refusal
+- physical failure (ochranna poloha do odezneni bolesti)
 
 ## Vizuani komunikace stavu
 
@@ -289,5 +320,5 @@ Doporucene konvence:
 - drag and drop
 - vlastni komplexni timeline
 - pokrocile filtry historie
-- lokalizacni system
+- dalsi jazyky krome cestiny (lokalizacni klice ale ano)
 - nastavitelne theme profily

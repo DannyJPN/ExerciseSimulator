@@ -70,10 +70,15 @@ System musi:
 Avatar muze pozadat o:
 
 - kratsi vydrz
-- zruseni nebo zmimeni cviku
+- zruseni nebo zmirneni cviku
 - upravu odevu
 
-Pokud trener zamitne:
+Pri prosbe avatar:
+
+- bud drzi pozici dal
+- nebo kratce zaujme prosebnou pozici – pauza bez trestu, hold timer stoji
+
+Pokud trener zamitne nebo neodpovi:
 
 - avatar pokracuje
 - komunikace se zapise do historie
@@ -84,8 +89,9 @@ MusI nastat:
 
 - ukonceni cviku jako `not counted`
 - nastaveni stavu ochranneho drzeni tela
-- verbalni hlaseni bolesti
-- zadna automaticka sankce
+- verbalni hlaseni bolesti a prosba o odpusteni
+- zadna sankce – system sankci za selhani blokuje
+- avatar zustava v ochranne poloze, dokud bolest neklesne pod prah; na povely reaguje prosenim
 
 ### Pri sankci ExtendHold
 
@@ -100,8 +106,10 @@ MusI nastat:
 MusI nastat:
 
 - overeni, ze existuje sundatelna cast odevu
+- kus urci trener, jinak ho vybere avatar
 - prechod do wardrobe flow
 - animovane sundani zvolene casti odevu
+- zvyseni `humiliation` a viditelne rozpaky (podle profilu)
 - navrat do dalsi cinnosti
 
 Pokud uz neni co sundat:
@@ -121,15 +129,15 @@ Vysledek:
 
 - wall sit je prerusen
 - wall sit je `not counted`
-- bez automaticke sankce
+- sankce za toto preruseni je blokovana
 
 ### 2. Ztrata kontaktu se zdi
 
 Vysledek:
 
-- zhorseni evaluation score
-- mozne nezapocitani
-- mozna verbalni sebereflexe chyby
+- zhorseni evaluation score (vi o nem jen avatar, trener ho v UI nevidi)
+- o nezapocitani rozhoduje trener
+- mozna verbalni sebereflexe chyby a zadost o sankci (podle profilu)
 
 ### 3. Vysoka bolest, ale stale ne totalni selhani
 
@@ -137,6 +145,7 @@ Vysledek:
 
 - avatar zpomaluje
 - prosby o ulevu jsou castejsi
+- pokud trener trva a bolest prekroci tvrdy prah, avatar cvik odmitne (pretizeni) a odpociva
 
 ### 4. Sankce LessClothing neni mozna
 

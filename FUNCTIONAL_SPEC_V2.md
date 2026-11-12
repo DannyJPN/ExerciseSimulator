@@ -8,6 +8,7 @@ Typ produktu:
 `PC-first sandbox simulator`, ve kterem uzivatel vystupuje vyhradne jako trener a ridi humanoidniho avatara pri cviceni, korekcich, sankcich a prevlekani.
 
 Tento dokument uzavira funkcni zadani pro MVP na zaklade upresnenych rozhodnuti.
+Pri rozporu s ostatnimi dokumenty ma prednost tento dokument.
 
 ## Zakladni role a rezim
 
@@ -24,18 +25,21 @@ Tento dokument uzavira funkcni zadani pro MVP na zaklade upresnenych rozhodnuti.
 - System blokuje pouze:
   - fyzicky neproveditelne situace
   - sankce, ktere uz nelze dal aplikovat
+  - sankce za situace, ktere se netrestaji (viz `Sankce`)
   - akce, ktere nemaji dostupnou realizovatelnou polohu nebo kontext
 
-Avatar nesmi prikaz primo odmitnout. Muze:
+Avatar povel zasadne neodmita. Muze:
 
-- pozadat o zmimeni povelu
+- pozadat o zmirneni povelu
 - pozadat o zruseni povelu
-- pozadat o zmimeni sankce
+- pozadat o zmirneni sankce
 
 Pokud trener prosbu zamitne:
 
 - avatar se musi podridit
 - povel nebo sankce zustavaji v puvodni podobe
+
+Jedina vyjimka je `pretizeni` (viz `Pretizeni a odmitnuti cviku`).
 
 ## Kamera a ovladani
 
@@ -49,6 +53,8 @@ Doporucene rychle pohledy pro MVP:
 - bocni pohled
 - detail nohou
 - detail trupu
+
+Kamera zastupuje pohled trenera. Kdyz se avatar obraci na trenera (prosba, zadost o sankci), obraci se do kamery.
 
 Ovladani avatara:
 
@@ -71,19 +77,39 @@ Interakce s prostredim probiha pres:
 - zaujmout vhodnou polohu
 - provest cvik nebo akci
 
+## Tvorba avatara
+
+Novy avatar vznika z `predlohy s upravami`:
+
+- vyber predlohy (pohlavi, zakladni vzhled)
+- uprava zakladnich parametru: vlasy, postava, odstin pleti, obleceni
+- volba profilu osobnosti
+- jmeno
+
+Plny editor vzhledu neni soucasti MVP.
+
 ## Obleceni a diskretnost
 
-Avatar ma tyto sloty obleceni:
+Grafika musi byt za vsech okolnosti `SFW`.
 
-- `top`
-- `bottom`
+### Nesundatelna zakladni vrstva
+
+Kazdy avatar ma vzdy na sobe:
+
+- `tricko nebo tilko`
+- `sportovni sortky`
+  - zeny mohou mit misto sortek `sukni s vsitymi sortkami` (zvenku sukne, zespodu jsou videt vsite sortky)
+
+Zakladni vrstva neni slot, nelze ji sundat ani sankci, ani povelem.
+
+### Sundavaci sloty
+
+- `top` – vrchni vrstva (mikina, bunda)
+- `bottom` – vrchni spodek (teplaky)
 - `shoes`
 - `socks`
 
-Soucasne plati:
-
-- avatar ma `nesundatelne sortky`
-- aplikace musi zustat zobrazitelna i ve stavu, kdy jsou vsechny 4 sloty sundane
+Aplikace musi zustat zobrazitelna i ve stavu, kdy jsou vsechny 4 sloty sundane.
 
 Prevlekani musi byt:
 
@@ -94,8 +120,18 @@ Prevlekani musi byt:
 Priklady vhodnych poloh:
 
 - sed na lavicce
-- sed se skracenymi nohami
+- sed se skrcenymi nohami
 - klek
+
+### Oblekani zpet
+
+Ke kazdemu sundavacimu povelu existuje opacny povel (`obuj se`, `vezmi si ponozky`, `oblekni si mikinu`, `oblekni si teplaky`).
+
+- avatar muze sam pozadat o vraceni obleceni (prosba `upravit odev`)
+- bez souhlasu trenera se avatar neoblece
+- stav obleceni se uklada i mezi sezenimi
+
+### Vliv obleceni
 
 Pro cviky neexistuji pevna globalni pravidla obleceni.
 Obleceni ale ovlivnuje:
@@ -105,14 +141,25 @@ Obleceni ale ovlivnuje:
 - vykon
 - pravdepodobnost prosby o ulevu
 
-Sankce `mene obleceni` musi byt podporovana uz v MVP.
-Pokud uz nelze zadnou dalsi cast obleceni sundat:
+Cviceni naboso:
 
-- tato sankce je blokovana
+- nezpusobuje bolest
+- je primarne esteticka zmena
+
+### Ponizeni
+
+Sundane obleceni nasazene `za trest` (sankce `mene obleceni`) pusobi na avatara jako `ponizujici faktor`:
+
+- snizuje sebevedomi a zvysuje pokoru (psychicke promenne)
+- tim ovlivnuje vykon, sklon prosit a formulace reakci
+- projevuje se navenek: vyraz, gesto, poznamka
+- sila efektu zavisi na profilu (citlivy vice, disciplinovany mene)
+
+Plati pro vsechny sundavaci sloty, nejen pro boty a ponozky.
 
 ## Dilci povely MVP
 
-Minimalni sada dilcich povelu pro MVP:
+### Polohy
 
 - `stoupni si`
 - `sedni si`
@@ -120,22 +167,36 @@ Minimalni sada dilcich povelu pro MVP:
 - `sedni si na paty`
 - `lehni si na bricho`
 - `lehni si na zada`
-- `predpaz`
-- `rozpaz`
-- `vzpaz`
-- `dej ruce za hlavu`
-- `sundej si boty`
-- `sundej si ponozky`
 - `drepni si`
 
 Poznamka:
 `sedni si` zde znamena bezne sezeni s pokrcenyma nohama, ne sed na lavicce, pokud to nebude explicitne zadano jinak.
+
+### Ruce
+
+- `predpaz`
+- `rozpaz`
+- `vzpaz`
+- `dej ruce za hlavu`
+
+### Obleceni
+
+- `sundej si boty` / `obuj se`
+- `sundej si ponozky` / `vezmi si ponozky`
+- `sundej si mikinu` / `oblekni si mikinu`
+- `sundej si teplaky` / `oblekni si teplaky`
+
+### Rizeni serie
+
+- `dalsi serie` – ukonci pauzu a spusti dalsi serii
+- `dost` – ukonci cviceni bez cile
 
 ## Cviky MVP
 
 Pevna pocatecni sada cviku:
 
 - `wall sit`
+- `plank`
 - `drepy`
 - `kliky`
 - `divci kliky`
@@ -157,6 +218,13 @@ Pri cviku `surrenders` ma avatar:
 
 - ruce za hlavou
 
+### Strany
+
+U cviku se stranami (`surrenders`, `vypady`):
+
+- nohu si voli avatar sam
+- trener muze urcit jinak: `stridave`, `jen leva`, `jen prava`
+
 ### Definice sedu-lehu
 
 Pro MVP jde o `plne sedy lehy`, ne o `crunch`.
@@ -166,21 +234,52 @@ Pro MVP jde o `plne sedy lehy`, ne o `crunch`.
 - lehci varianta cviku
 - nebo projev bolesti brisnich svalu
 
+## Zadani cviku: serie, opakovani, vydrz
+
+Cvik se deli na `serie`.
+
+Parametry cviku:
+
+- pocet serii
+- pocet opakovani v serii (opakovaci cviky)
+- delka vydrze (vydrzove cviky)
+
+Trener muze:
+
+- pouzit vlastni ulozeny `preset` (napr. `drepy 3x10`)
+- zadat parametry pokazde znovu
+- spustit `cviceni bez cile` – bezi, dokud trener nerekne `dost`
+
+Pauza mezi seriemi:
+
+- trva, dokud trener neda povel `dalsi serie`
+
 ## Spousteni a prerusovani povelu
 
 - Dilci povely je mozne zadavat i `behem cviku`
 - Novy povel se ma plnit `ihned`
 - System tedy musi podporovat `okamzite preruseni aktualni cinnosti`
 
-Pokud je cvik prerusen:
+Pokud je cvik prerusen povelem trenera:
 
 - cvik se povazuje za `nedokonceny`
 - cvik se `nezapocitava`
-- z preruseni automaticky nevyplyva sankce
+- za preruseni nelze udelit sankci
 
 ## Hodnoceni provedeni
 
-Avatar musi umet rozpoznat konkretni typ chyby.
+Serie konci po zadanem poctu pokusu. Spatne opakovani serii automaticky neprodluzuje.
+
+Nesplneni hlida `trener` (hrac):
+
+- trener sam sleduje provedeni (kamera, rychle pohledy)
+- system trenerovi chyby provedeni v UI nezobrazuje
+- nesplneni trener oznami az po serii nebo po cviku (nezapocitani, sankce)
+
+System pritom chyby rozpoznava `jako svedomi avatara`:
+
+- avatar vi, ktera opakovani byla spatne a proc
+- podle profilu se muze sam priznat
 
 Minimalni typy chyb pro MVP:
 
@@ -192,16 +291,6 @@ Priklad:
 
 - u drepu muze jit o zvednuti pat
 
-Vyhodnoceni ma byt:
-
-- automaticke
-- po cviku nebo po opakovani dle typu cviku
-- spojene s verbalni identifikaci chyby
-
-Pokud avatar vyhodnoti provedeni jako spatne:
-
-- cvik nebo opakovani se `nezapocitava`
-
 ## Sebehodnoceni
 
 Avatar musi umet:
@@ -212,6 +301,8 @@ Avatar musi umet:
 - navrhnout sankci
 - nebo obecne pozadat o sankci a ponechat vyber na trenerovi
 
+Samo od sebe nesplneni oznamuji hlavne profily `sebekriticky` a `ambiciozni`.
+
 Sebehodnoceni ma byt ovlivneno:
 
 - profilem osobnosti
@@ -219,21 +310,41 @@ Sebehodnoceni ma byt ovlivneno:
 - mirou bolesti
 - sebekritikou
 
+### Zadost o sankci
+
+Kdyz avatar zada o sankci:
+
+- pokud prave necvici, otoci se do kamery
+- podle povahy pouzije mene ci vice prosebne gesto
+- vyslovi zadost
+- trener zvoli sankci, nebo `odpusti`
+
+`Odpustit` je samostatna akce trenera.
+
 ## Sankce
 
 Pro MVP jsou povolene tyto typy sankci:
 
 - `opakovani cviku`
-- `delsi serie nebo vetsi vydrz`
+- `delsi serie nebo vetsi vydrz` – prodlouzi probihajici serii (uprava)
+- `extra serie` – prida k cviku novou serii (pridani)
 - `nezapocitani cviku`
 - `zprisneni cviku`
 - `provedeni cviku s mene oblecenim`
 
+`Zkraceni pauzy` neni sankce.
+
 Pravidla:
 
-- fyzicke selhani se netresta
-- nedokonceni z duvodu preruseni se automaticky netresta
+- fyzicke selhani se netresta – system takovou sankci blokuje
+- preruseni cviku povelem trenera se netresta – system takovou sankci blokuje
 - neprimerene nebo neproveditelne sankce system blokuje
+
+### Sankce mene obleceni
+
+- kus obleceni urci trener
+- pokud ho trener neurci, vybere ho avatar
+- pokud uz nelze zadny sundavaci slot sundat, je sankce blokovana
 
 Avatar muze:
 
@@ -241,7 +352,7 @@ Avatar muze:
 - obecne poprosit o sankci a nechat rozhodnout trenera
 - pri udelene sankci poprosit o mirnejsi variantu
 
-Pokud trener zadost o zmimeni zamitne:
+Pokud trener zadost o zmirneni zamitne:
 
 - avatar sankci pokorne prijme
 
@@ -258,10 +369,17 @@ Typy proseb o ulevu pro MVP:
 - kratsi doba cviku
 - mensi pocet opakovani
 - zruseni cviku
-- zmimeni cviku
-- zmimeni sankce
+- zmirneni cviku
+- zmirneni sankce
 - zruseni sankce
 - moznost upravit odev
+
+Prubeh prosby behem cviku:
+
+- avatar muze pri prosbe pokracovat ve cviceni
+- nebo muze kratce zaujmout `prosebnou pozici`
+  - prosebna pozice je `pauza bez trestu`: cas i pocitani se zastavi a po navratu pokracuji
+- pokud trener neodpovi, avatar ve cviceni pokracuje
 
 Pokud je prosba zamitnuta:
 
@@ -295,7 +413,7 @@ Mezi sezeni se uklada:
 - vzhled avatara
 - obleceni
 - kondice po segmentech tela
-- historie bolesti nebo zraneni
+- unava a bolest po segmentech tela
 - posledni umisteni ve scene
 
 System ma podporovat `vice ulozenych avataru`.
@@ -305,16 +423,32 @@ Ukladani:
 - manualni ulozeni a ukonceni
 - prubezne automaticke ukladani
 
+## Segmenty tela
+
+Unava, bolest i kondice se vedou `po svalech`, `zvlast pro levou a pravou stranu`.
+Sleduji se pouze svaly (ne klouby, ne chodidla).
+
+Pracovni seznam svalovych segmentu (kazdy L/P):
+
+- stehna (predni)
+- hamstringy
+- hyzde
+- lytka
+- ramena
+- prsa
+- triceps
+- predlokti
+- bricho
+- spodni zada
+- horni zada
+
+Navic:
+
+- `kardio` – pouze unava a kondice, neboli
+
 ## Kondice
 
 Kondice je vedena `po segmentech tela`, ne jednou globalni hodnotou.
-
-Minimalni segmentace pro MVP:
-
-- nohy
-- ruce
-- stred tela
-- kardio
 
 Kondice:
 
@@ -326,11 +460,17 @@ Kondice:
 
 `Unava` a `bolest` jsou samostatne veliciny.
 
+V MVP neexistuji zraneni. Jedinym dlouhodobym nasledkem pretizeni je `bolest svalu`.
+
 Bolest muze vzniknout:
 
 - spatnou technikou
 - dlouhodobym unavenim
-- nevhodnym odevem nebo obutim
+- nevhodnym odevem nebo obutim (krome cviceni naboso)
+
+Regenerace:
+
+- unava i bolest ubyvaji v `realnem case`, tedy i mezi sezenimi
 
 Kdyz se zhorsuje stav, plati toto poradi projevu:
 
@@ -344,8 +484,11 @@ Pokud dojde k fyzickemu selhani:
 - avatar cvik uz nedokaze dokoncit
 - fyzicke selhani se netresta
 - avatar zaujme ochrannou polohu
-- drzi se za bolavou cast tela
+- drzi se za bolavy sval
 - verbalne sdeli, co ho boli
+- prosi o odpusteni a dava najevo neschopnost pokracovat
+- v ochranne poloze zustava, dokud bolest neodezni natolik, aby mohl pokracovat
+- na povely v teto dobe reaguje prosenim
 
 Bolest:
 
@@ -353,7 +496,19 @@ Bolest:
 - pri dalsim komandovani v bolesti muze avatar hlavne prosit a verbalne davat najevo bolest
 - po urcitem case bolesti muze pri dalsim komandovani reagovat prevazne verbalne typu `au` a prosbami
 
-Trener muze zatizit i bolavou cast tela, pokud to jeste neni fyzicky nemozne.
+Trener muze zatizit i bolavy sval, pokud to jeste neni fyzicky nemozne.
+
+## Pretizeni a odmitnuti cviku
+
+Avatar smi odmitnout cvik pouze pri `pretizeni`, tj. pri bolesti svalu zatezovanych cvikem.
+
+Postup:
+
+1. avatar nejdriv prosi o ulevu
+2. pokud trener na cviku trva a bolest je nad `tvrdym prahem`, avatar cvik odmitne
+3. pretizeny avatar musi odpocivat, dokud bolest neklesne pod prah
+
+Polohy a ostatni dilci povely avatar plni i pri pretizeni.
 
 ## Psychika a vykon
 
@@ -366,6 +521,7 @@ System musi pocitat aspon s vlivem:
 - sebekritiky
 - citlivosti
 - ambice
+- sebevedomi a pokory (vcetne ponizeni, viz `Obleceni a diskretnost`)
 
 Psychicke faktory ovlivnuji:
 
@@ -387,6 +543,7 @@ Tyto profily se maji lisit:
 
 - vnitrnimi parametry rozhodovani
 - stylem verbalnich reakci
+- mirou prosebnosti gest
 
 ## Dialog a projev
 
@@ -403,6 +560,8 @@ V MVP:
 
 - reakce budou `textove`
 - bez hlasu
+- jazyk `cestina`
+- texty ulozene v datech tak, aby slo pozdeji pridat dalsi jazyk
 
 ## Vizualni reakce
 
@@ -415,6 +574,8 @@ Minimalni vizualni projevy pro MVP:
 - tres
 - zpomaleni pohybu
 - ochranne drzeni tela pri bolesti
+- prosebna gesta (sila podle profilu)
+- rozpaky pri ponizeni
 
 ## UI MVP
 
@@ -432,10 +593,12 @@ Historie muze byt:
 Historie ma obsahovat:
 
 - zadane povely
-- splnene cviky
-- chyby
-- sankce
-- prosby avatara
+- dokoncene a prerusene cviky
+- nezapocitani a sankce udelene trenerem
+- priznani chyb avatarem
+- prosby avatara a odpovedi trenera
+
+UI jazyk: `cestina`, pripravena na lokalizaci.
 
 ## Co neni soucast MVP
 
@@ -444,6 +607,8 @@ Historie ma obsahovat:
 - vice postav najednou v jedne scene
 - otevrena rozsahla telocvicna
 - vztahovy model mezi trenerem a avatarem napric sezenimi
+- zraneni
+- plny editor vzhledu avatara
 
 ## Doporuceny prvni vertical slice
 
@@ -452,8 +617,8 @@ Prvni overovaci implementace ma pokryt:
 - `wall sit`
 - preruseni cviku dilcim povelem
 - automaticke nezapocitani pri preruseni
-- rozpoznani chyby
-- prosbu o ulevu
+- rozpoznani chyby avatarem a jeho priznani
+- prosbu o ulevu vcetne prosebne pozice
 - zamitnuti prosby trenerem
 - fyzicke selhani bez sankce
 - sankci `delsi vydrz`
@@ -464,6 +629,7 @@ Prvni overovaci implementace ma pokryt:
 
 Tyto body nejsou nutne blokujici, ale budou vyzadovat pozdejsi rozhodnuti:
 
-- presna granularita segmentu tela nad ramec nohy, ruce, stred tela a kardio
+- potvrzeni presneho seznamu svalovych segmentu
+- hodnoty prahu bolesti (prosba, tvrdy prah odmitnuti, konec ochranne polohy)
 - presny katalog formulaci pro jednotlive osobnostni profily
 - pravidla pro budouci parser volneho textu

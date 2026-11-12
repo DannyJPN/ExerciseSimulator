@@ -15,6 +15,7 @@ Smysl:
 ### Exercises
 
 - `Wall Sit`
+- `Plank`
 - `Drep`
 - `Klik`
 - `Divci Klik`
@@ -41,18 +42,68 @@ Smysl:
 
 ### Wardrobe
 
-- `Sundej si boty`
-- `Sundej si ponozky`
+- `Sundej si boty` / `Obuj se`
+- `Sundej si ponozky` / `Vezmi si ponozky`
+- `Sundej si mikinu` / `Oblekni si mikinu`
+- `Sundej si teplaky` / `Oblekni si teplaky`
+
+Poznamka:
+
+- nesundatelna zakladni vrstva (tricko/tilko + sortky, u zen volitelne sukne s vsitymi sortkami) nema zadny povel
+
+### Set Control
+
+- `Dalsi serie`
+- `Dost`
+
+### Trainer Responses
+
+- `Prijmout prosbu`
+- `Zamitnout prosbu`
+- `Odpustit`
 
 ### Sanctions
 
 - `Opakuj cvik`
-- `Delsi vydrz`
+- `Delsi serie / vydrz` (prodlouzi probihajici serii)
+- `Extra serie` (prida novou serii)
 - `Nezapocitat`
 - `Zprisnit cvik`
 - `Mene obleceni`
 
+Poznamka:
+
+- `zkraceni pauzy` neni sankce
+
 ## Detail cviku MVP
+
+Spolecne pro vsechny cviky:
+
+- cvik se deli na serie
+- parametry: pocet serii, opakovani nebo delka vydrze; z presetu trenera, rucne, nebo `bez cile`
+- pauza mezi seriemi trva do povelu `Dalsi serie`
+- serie konci po zadanem poctu pokusu; chyby rozpoznava jen avatar (svedomi), trenerovi se v UI nezobrazuji
+
+### 0. Plank
+
+Typ:
+
+- hold based
+
+Interakce:
+
+- podlozka
+
+Minimalni chyby:
+
+- ztrata rovne linie tela (propadle nebo zvednute boky)
+- predcasne ukonceni
+
+Mozne zprisneni:
+
+- delsi vydrz
+- extra serie
+- mene obleceni
 
 ### 1. Wall Sit
 
@@ -135,6 +186,10 @@ Povinna pozice rukou:
 
 - ruce za hlavou
 
+Strany:
+
+- prvni koleno si voli avatar, pokud trener neurci `stridave` / `jen leva` / `jen prava`
+
 Minimalni chyby:
 
 - poruseni poradi poloh
@@ -162,6 +217,10 @@ Minimalni chyby:
 Typ:
 
 - repetition based
+
+Strany:
+
+- nohu si voli avatar, pokud trener neurci `stridave` / `jen leva` / `jen prava`
 
 Minimalni chyby:
 
@@ -213,7 +272,15 @@ Pouziti:
 
 Pouziti:
 
-- hold cviky jako `wall sit`
+- prodlouzeni probihajici serie (uprava)
+- hold cviky jako `wall sit`: delsi vydrz
+- opakovaci cviky: vice opakovani v probihajici serii
+
+### 2b. ExtraSet
+
+Pouziti:
+
+- pridani nove serie k cviku (pridani)
 
 ### 3. DoNotCount
 
@@ -237,11 +304,18 @@ Pouziti:
 
 Pouziti:
 
-- odebrani casti obleceni
+- odebrani sundavaciho kusu obleceni (mikina, teplaky, boty, ponozky)
+- kus urci trener, jinak vybere avatar
+- pusobi jako ponizujici faktor (psychika + viditelne rozpaky)
 
 Blokace:
 
 - pokud uz neni co sundat
+
+### Obecne blokace sankci
+
+- sankce za fyzicke selhani je blokovana
+- sankce za cvik preruseny povelem trenera je blokovana
 
 ## Osobnostni profily MVP
 
@@ -311,6 +385,12 @@ Minimalni textove kategorie:
 - `MercyRequest`
 - `ClothingAdjustmentRequest`
 - `ExerciseNotCounted`
+- `SanctionRequest`
+- `ForgivenessPlea`
+- `OverloadRefusal`
+- `Humiliation`
+
+Jazyk dialogu: `cestina`, texty v datech pripravene na dalsi jazyk.
 
 ## Vizualni projevy MVP
 
@@ -322,12 +402,16 @@ Minimalni sada:
 - bolest
 - ochranne drzene tela
 - tres
+- prosebna pozice / prosebne gesto (sila podle profilu)
+- obraceni do kamery pri oslovovani trenera
+- rozpaky pri ponizeni
 
 ## Authoring backlog pro content
 
 ### Nutne command assety
 
 - `CMD_WallSit`
+- `CMD_Plank`
 - `CMD_Squat`
 - `CMD_PushUp`
 - `CMD_KneePushUp`
@@ -346,11 +430,20 @@ Minimalni sada:
 - `CMD_ArmsUp`
 - `CMD_HandsBehindHead`
 - `CMD_RemoveShoes`
+- `CMD_PutOnShoes`
 - `CMD_RemoveSocks`
+- `CMD_PutOnSocks`
+- `CMD_RemoveTop`
+- `CMD_PutOnTop`
+- `CMD_RemoveBottom`
+- `CMD_PutOnBottom`
+- `CMD_NextSet`
+- `CMD_Stop`
 
 ### Nutne exercise assety
 
 - `EX_WallSit`
+- `EX_Plank`
 - `EX_Squat`
 - `EX_PushUp`
 - `EX_KneePushUp`
@@ -362,6 +455,7 @@ Minimalni sada:
 
 - `SAN_RepeatExercise`
 - `SAN_ExtendHold`
+- `SAN_ExtraSet`
 - `SAN_DoNotCount`
 - `SAN_StricterVariation`
 - `SAN_LessClothing`
@@ -377,6 +471,7 @@ Minimalni sada:
 
 - dalsi cviky mimo tento seznam
 - dalsi sloty obleceni
+- zraneni
 - hlasove reakce
 - parser volneho textu
 - vztahovy model s trenerem mezi sezenimi

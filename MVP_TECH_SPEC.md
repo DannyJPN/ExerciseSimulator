@@ -117,12 +117,19 @@ Typy povelu:
   - "lehni si"
   - "predpaz"
 - `wardrobe commands`
-  - "sundej si ponozky"
-  - "zuj si boty"
+  - "sundej si ponozky" / "vezmi si ponozky"
+  - "zuj si boty" / "obuj se"
+- `set control commands`
+  - "dalsi serie" (pauza mezi seriemi trva do tohoto povelu)
+  - "dost" (ukonci cviceni bez cile)
+- `trainer responses`
+  - prijmout / zamitnout prosbu
+  - odpustit (misto sankce)
 - `discipline commands`
   - "opakuj to"
   - "dostanes sankci"
-  - "pauza"
+
+Parametry cviku (serie, opakovani, vydrz, strana) bere trener z vlastniho presetu, zadava rucne, nebo spousti cviceni bez cile.
 
 Implementace:
 
@@ -191,14 +198,16 @@ Implementace:
 - `ExerciseStep`
 - `ExerciseEvaluator`
 
-Prvni doporucene cviky pro MVP:
+Cviky pro MVP (zavazny seznam je v `FUNCTIONAL_SPEC_V2.md`):
 
 - `Wall Sit`
+- `Plank`
 - `Squat`
 - `Push-Up`
-- `Plank`
+- `Knee Push-Up`
+- `Surrenders`
+- `Sit-Up`
 - `Lunge`
-- `Seated Forward Arm Raise` nebo podobny staticky posturalni cvik
 
 ### 4. Environment Interaction System
 
@@ -257,6 +266,12 @@ Vystup:
 - `fail`
 - odchylky po kategoriich
 
+Pouziti vystupu:
+
+- slouzi jako `svedomi avatara` (sebehodnoceni, priznani chyby)
+- trenerovi se v UI nezobrazuje; nesplneni hlida a vyhlasuje trener
+- serie konci po zadanem poctu pokusu, spatna opakovani ji automaticky neprodluzuji
+
 ### 6. Fatigue and Capability System
 
 Ucel:
@@ -265,10 +280,7 @@ Modelovat schopnost avatara pokracovat a kvalitu jeho vykonu.
 Doporucene runtime veliciny:
 
 - `globalFatigue`
-- `cardioFatigue`
-- `localFatigueLegs`
-- `localFatigueArms`
-- `localFatigueCore`
+- unava, bolest a kondice po svalovych segmentech zvlast L/P, plus `Cardio` (viz `DATA_MODEL_SPEC.md`)
 - `discomfort`
 - `motivation`
 - `compliance`
@@ -286,6 +298,13 @@ Pouziti:
 Poznamka:
 MVP ma pouzit `deterministicky pravidlovy model`, ne slozitou fyziologickou simulaci.
 
+Dalsi pravidla:
+
+- unava i bolest regeneruji v realnem case, i mezi sezenimi
+- zadna zraneni, jen bolest
+- pretizeni: nad tvrdym prahem bolesti avatar nejdriv prosi a pri trvani trenera cvik zatezujici bolave svaly odmitne a odpociva
+- po fyzickem selhani zustava avatar v ochranne poloze, dokud bolest neodezni; na povely reaguje prosenim
+
 ### 7. Wardrobe System
 
 Ucel:
@@ -293,10 +312,12 @@ Ridit obleceni jako herni stav, ne jen kosmetiku.
 
 Sloty:
 
-- `top`
-- `bottom`
+- `top` (mikina / bunda)
+- `bottom` (teplaky)
 - `shoes`
 - `socks`
+
+Nesundatelna zakladni vrstva (tricko/tilko + sortky, u zen volitelne sukne s vsitymi sortkami) neni slot a zajistuje SFW zobrazeni ve vsech stavech.
 
 Stavy:
 
@@ -315,8 +336,11 @@ Implementace:
 Priklady pravidel:
 
 - cvik muze vyzadovat cviceni bez bot
-- uzivatel muze vydat povel k sundani ponozek
-- avatar muze odmitnout provest akci, pokud neni v korektnim stavu pro dany cvik
+- uzivatel muze vydat povel k sundani ponozek i k jejich vraceni
+- avatar muze pozadat o vraceni obleceni, bez souhlasu trenera se ale neoblece
+- avatar akci neodmita; pokud neni v korektnim stavu, system povel zablokuje (jedina vyjimka je pretizeni bolesti)
+- cviceni naboso neboli, je to esteticka zmena
+- sundani obleceni za trest pusobi jako ponizujici faktor (psychika + viditelne rozpaky)
 
 ### 8. Sanction, Self-Assessment and Negotiation System
 
@@ -346,14 +370,18 @@ Dulezite runtime vlastnosti:
 
 #### Sanctions
 
-Doporucene typy sankci pro MVP:
+Typy sankci pro MVP (zavazny seznam je v `FUNCTIONAL_SPEC_V2.md`):
 
-- nezapocitani opakovani
-- opakovani cviku znovu
-- prodlouzeni drzeni pozice
-- extra opakovani
-- zkraceni pauzy
-- extra serie
+- opakovani cviku
+- delsi serie nebo vetsi vydrz (prodlouzeni probihajici serie)
+- extra serie (pridani nove serie)
+- nezapocitani
+- zprisneni cviku
+- mene obleceni
+
+`Zkraceni pauzy` neni sankce.
+
+Sankce za fyzicke selhani nebo za cvik preruseny povelem trenera system blokuje.
 
 Implementace:
 
@@ -366,6 +394,7 @@ Implementace:
 Scenare:
 
 - avatar sam navrhne sankci za spatne provedeni
+- avatar obecne pozada o sankci (otoci se do kamery, prosebne gesto); trener zvoli sankci nebo odpusti
 - uzivatel udeli sankci
 - avatar pozada o mirnejsi variantu
 - avatar naopak pozada o prisnejsi rezim, pokud ma pocit prilisne benevolence
@@ -421,6 +450,10 @@ Minimalni FSM pro MVP:
 - `Recovering`
 - `Negotiating`
 - `Sanctioned`
+- `RestingBetweenSets`
+- `PleadingPause`
+- `ProtectivePose`
+- `OverloadRest`
 
 Pravidla:
 
