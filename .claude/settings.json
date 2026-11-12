@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|NotebookEdit|Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python \"$CLAUDE_PROJECT_DIR/.claude/hooks/guard_outside_repo.py\"",
+            "timeout": 10,
+            "statusMessage": "Kontrola přístupu mimo repo"
+          }
+        ]
+      }
+    ]
+  }
+}
